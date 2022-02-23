@@ -13,14 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(spotifyr)
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
-```
-# comparing energy levels per album  
-``` {r}
-corpus_new <- corpus %>%
-  group_by(track.album.release_date) %>%
+
+corpus %>%
   median_album_energy = median("energy") %>%
-  corpus_artist <- summarize(corpus, track.album.artists = "name")
-ggplot(corpus_new, aes(x = track.album.name, y = median_album_energy)) +
+ggplot(corpus, aes(x = track.album.name, y = median_album_energy)) +
   geom_col(stat='identity', fill = "#00abff") +
   labs(x = "",
     y = "" ,
@@ -39,12 +35,12 @@ remotes::install_github('jaburgoyne/compmus')
 library(tidyverse)
 library(spotifyr)
 library(compmus)
-ood <-
-  get_tidy_audio_analysis("6BoVVeeH3vmrHlgivNbefW") %>%
+gmail <-
+  get_tidy_audio_analysis("6XpC78SxrP8Y2EnLZ6gNtI") %>%
   select(segments) %>%
   unnest(segments) %>%
   select(start, duration, pitches)
-wood %>%
+gmail %>%
   mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
   compmus_gather_chroma() %>% 
   ggplot(
