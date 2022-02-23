@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Index"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns

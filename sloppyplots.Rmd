@@ -9,24 +9,54 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+``` {r plots}
+library(tidyverse)
+library(spotifyr)
+corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
+```
+# comparing energy levels per album  
+``` {r}
+corpus_new <- corpus %>%
+  group_by(track.album.release_date) %>%
+  median_album_energy = median("energy") %>%
+  corpus_artist <- summarize(corpus, track.album.artists = "name")
+ggplot(corpus_new, aes(x = track.album.name, y = median_album_energy)) +
+  geom_col(stat='identity', fill = "#00abff") +
+  labs(x = "",
+    y = "" ,
+    title = "Median energy per album" ,
+    subtitle = "",
+    caption = "Data source: Spotify API") +
+  theme_minimal() +
+  theme(
+    title = element_text(color = "gray25"),
+    plot.caption = element_text(color = "gray25")) +
+    coord_flip()
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r compus chromagram}
+remotes::install_github('jaburgoyne/compmus')
+library(tidyverse)
+library(spotifyr)
+library(compmus)
+ood <-
+  get_tidy_audio_analysis("6BoVVeeH3vmrHlgivNbefW") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+wood %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
