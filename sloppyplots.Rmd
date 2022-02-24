@@ -15,19 +15,23 @@ library(spotifyr)
 library(dplyr)
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
-corpus.new <- corpus %>%
-  median_album_energy = median("energy") 
-ggplot(corpus_new, aes(x = track.album.name, y = median_album_energy)) +
+corpus_new <- corpus %>%
+  mutate(mean_album_energy = mean(energy)) %>%
+  mutate(track.album.name = fct_reorder(track.album.name, desc(mean_album_energy))) %>%
+  group_by(track.album.name) 
+ggplot(corpus_new, aes(x = track.album.name, y  = mean_album_energy)) +
   geom_col(stat='identity', fill = "#00abff") +
   labs(x = "",
-    y = "" ,
-    title = "Median energy per album" ,
+    y = "energy" ,
+    title = "Mean energy per album" ,
     subtitle = "",
     caption = "Data source: Spotify API") +
   theme_minimal() +
   theme(
     title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25")) +
+    plot.caption = element_text(color = "gray25"),
+    panel.grid = element_blank(),
+    axis.text.x = element_blank()) +
     coord_flip()
 ```
 
@@ -36,12 +40,12 @@ remotes::install_github('jaburgoyne/compmus')
 library(tidyverse)
 library(spotifyr)
 library(compmus)
-gmail <-
-  get_tidy_audio_analysis("3yxC5xscsET5npQpNIiW9R") %>%
+getgot <-
+  get_tidy_audio_analysis("781V2Y5LPtcpgONEOadadE") %>%
   select(segments) %>%
   unnest(segments) %>%
   select(start, duration, pitches)
-gmail %>%
+getgot %>%
   mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
   compmus_gather_chroma() %>% 
   ggplot(
