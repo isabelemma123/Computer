@@ -2,33 +2,63 @@
 title: "Index"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+    storyboard: true
+    theme: yeti
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(plotly)
+library(spotifyr)
+library(tidyverse)
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
+### Meet Death Grips
 
-### Chart A
+**Death Grips** is an experimental hiphop band with three members. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out how Death Grips' music changed over time.
 
+*The Money Store* (2012) is their most popular album. In total, they released 8 albums, including one instrumental album and a mixtape. I chose to exclude the mixtape *Exmilitary*, because it is not on Spotify (it includes uncleared samples). And just so it has been mentioned: one of these seven albums is actually a double album. Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is an instrumental one. Therefore, it will be valuable to expand my data. Like mentioned before, I want to compare the different albums throughout the years. I will be focussing on the following questions:
+
+- What makes Death Grips so experimental and inaccessible? How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?
+- Is their most popular music their least experimental music?
+- How did Death Grips' music change over time? Has Death Grips become more experimental over time?
+
+In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
 ```{r}
-
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+### First visualisation with commentary
 
-### Chart B
+"Say hey kid" 
 
-```{r}
-
+```{r compus chromagram}
+remotes::install_github('jaburgoyne/compmus')
+library(tidyverse)
+library(spotifyr)
+library(compmus)
+gmail <-
+  get_tidy_audio_analysis("3yxC5xscsET5npQpNIiW9R") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+gmail %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
 ```
 
-### Chart C
+### Conclusion
 
 ```{r}
 

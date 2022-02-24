@@ -12,11 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ``` {r plots}
 library(tidyverse)
 library(spotifyr)
+library(dplyr)
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
-corpus %>%
-  median_album_energy = median("energy") %>%
-ggplot(corpus, aes(x = track.album.name, y = median_album_energy)) +
+corpus.new <- corpus %>%
+  median_album_energy = median("energy") 
+ggplot(corpus_new, aes(x = track.album.name, y = median_album_energy)) +
   geom_col(stat='identity', fill = "#00abff") +
   labs(x = "",
     y = "" ,
@@ -36,7 +37,7 @@ library(tidyverse)
 library(spotifyr)
 library(compmus)
 gmail <-
-  get_tidy_audio_analysis("6XpC78SxrP8Y2EnLZ6gNtI") %>%
+  get_tidy_audio_analysis("3yxC5xscsET5npQpNIiW9R") %>%
   select(segments) %>%
   unnest(segments) %>%
   select(start, duration, pitches)
