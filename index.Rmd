@@ -11,6 +11,7 @@ library(flexdashboard)
 library(plotly)
 library(spotifyr)
 library(tidyverse)
+library(ggplot2)
 ```
 
 ### Meet Death Grips
@@ -27,42 +28,46 @@ In summary, I will be analyzing i) how Death Grips changed over time and ii) wha
 ```{r}
 ```
 
-### Energy
+### Too energetic?
 
-#### I want to check my expectations. I think Death Grips' music is very energetic, sometimes even too energetic. Maybe this is what makes the music experimental and inaccessible. Let's see what the mean energy per album is.
-
-#### ""
 ``` {r plots}
 library(tidyverse)
 library(spotifyr)
 library(dplyr)
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
-corpus_new <- corpus %>%
-  mutate(mean_album_energy = mean(energy)) %>%
-  mutate(track.album.name = fct_reorder(track.album.name, desc(mean_album_energy))) %>%
-  group_by(track.album.name) 
-ggplot(corpus_new, aes(x = track.album.name, y  = mean_album_energy)) +
-  geom_col(stat='identity', fill = "#00abff") +
+corpus_new <- corpus 
+ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
+  geom_boxplot(fill = "#00abff") +
   labs(x = "",
     y = "energy" ,
-    title = "Mean energy per album" ,
+    title = "Energy per album" ,
     subtitle = "",
     caption = "Data source: Spotify API") +
   theme_minimal() +
   theme(
     title = element_text(color = "gray25"),
     plot.caption = element_text(color = "gray25"),
-    panel.grid = element_blank(),
     axis.text.x = element_blank()) +
     coord_flip()
 ```
 
+***
+
+Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
+
+We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.
+
+Funny enough, there is one dot at far left. Apparently there is a song on *Interview 2016* which is consequently Death Grips' least energetic song. 
+
+Also, *No Love Deep Web* is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are **Death Grips**. They definitely did not held back on purpose.
+
+Their music did not get less or more energetic over time. ???
+
+So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it experimental. This will help in researching whether their most popular music their least experimental music.
+
 ### Most popular song
 
-#### This chromagram is made from the song *Get Got*, Death Grips' most popular song.
-
-#### ""
 ```{r compus chromagram}
 remotes::install_github('jaburgoyne/compmus')
 library(tidyverse)
@@ -89,6 +94,10 @@ getgot %>%
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+
+***
+
+This chromagram is made from the song *Get Got*, Death Grips' most popular song.
 
 ### Conclusion
 

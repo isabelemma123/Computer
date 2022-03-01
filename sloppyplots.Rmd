@@ -17,10 +17,8 @@ corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus %>%
   mutate(mean_album_energy = mean(energy)) %>%
-  mutate(track.album.name = fct_reorder(track.album.name, desc(mean_album_energy))) %>%
-  group_by(track.album.name) 
 ggplot(corpus_new, aes(x = track.album.name, y  = mean_album_energy)) +
-  geom_col(stat='identity', fill = "#00abff") +
+  geom_boxplot(stat='identity', fill = "#00abff") +
   labs(x = "",
     y = "energy" ,
     title = "Mean energy per album" ,
