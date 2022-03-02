@@ -65,6 +65,8 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
 
 Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
 
+The Spotify API tells us that energy "represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”.
+
 We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.
 
 Funny enough, there is one dot at far left. Apparently there is a song on *Interview 2016* which is consequently Death Grips' least energetic song. 
@@ -73,7 +75,30 @@ Also, *No Love Deep Web* is quite an outlier compared to the energy levels of th
 
 Their music did not get less or more energetic over time. ???
 
-So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it experimental. This will help in researching whether their most popular music their least experimental music.
+So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so agressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to agressiveness, so that's what we'll look at in the next part.
+
+### Why Death Grips does not make you much happier
+
+``` {r plots}
+corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
+
+corpus_new <- corpus 
+ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
+  geom_boxplot(fill = "#00abff") +
+  labs(x = "",
+    y = "valence" ,
+    title = "Valence per album" ,
+    subtitle = "",
+    caption = "Data source: Spotify API") +
+  theme_minimal() +
+  theme(
+    title = element_text(color = "gray25"),
+    plot.caption = element_text(color = "gray25"),
+    axis.text.x = element_blank()) +
+    coord_flip()
+```
+
+Their happiest song is *System Blower*, which I think is very funny. *The Powers that B* is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most agressive album.
 
 ### Most popular song
 
@@ -103,7 +128,9 @@ getgot %>%
 
 ***
 
-This chromagram is made from the song *Get Got*, Death Grips' most popular song. As you can see, the chromagram is just as messy as the song, which makes sense. 
+This chromagram is made from the song *Get Got*, Death Grips' most popular song. As you can see, the chromagram is just as messy as the song, which makes sense. However, it is not weird for a chromagram of a hiphop song to look like this. Hiphop is mostly defined by its rythm. // We distuinguish hiphop mostly by its rythm.
+
+On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence, 
 
 ### FMO self-similarity cepstrogram
 
