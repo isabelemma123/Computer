@@ -101,7 +101,50 @@ getgot %>%
 
 ***
 
-This chromagram is made from the song *Get Got*, Death Grips' most popular song.
+This chromagram is made from the song *Get Got*, Death Grips' most popular song. As you can see, the chromagram is just as messy as the song, which makes sense. 
+
+### Self-similarity
+
+``` {r, self-similarity}
+fmo <-
+  get_tidy_audio_analysis("3d2k4INhmRO6becJmIBCSS") %>% 
+  compmus_align(sections, segments) %>%                  
+  select(sections) %>%                                    
+  unnest(sections) %>%                                      
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"
+      )
+  )
+
+fmo %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+***
+
+According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. 
 
 ### Conclusion
 
