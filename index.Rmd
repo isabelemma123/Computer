@@ -26,15 +26,19 @@ library(compmus)
 - Is their most popular music their least experimental music?
 - How did Death Grips' music change over time? Has Death Grips become more experimental over time?
 
-In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
+In summary, I will be analyzing i) what makes Death Grips experimental and ii) how Death Grips changed over time. My research will be based on the data of 7 albums and 1 EP.
+
+![MC Ride](https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp) 
 
 
+<style type="text/css">
+  img {   
+      display: block;
+      width: 250px;
+      }
+</style>
 
-![MC Ride](https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp)
-```{r, fig.width=3, fig.height=3}
-fig.width=3
-fig.height=3
-```
+
   
 ***
 
@@ -42,7 +46,7 @@ fig.height=3
 
 ### Why Death Grips gives you adrenaline
 
-``` {r plots}
+``` {r}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus 
@@ -79,7 +83,7 @@ So, we can state that the remarkable high energy levels of Death Grips' music is
 
 ### Why Death Grips does not make you much happier
 
-``` {r plots}
+``` {r}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus 
@@ -134,12 +138,12 @@ On the other hand, Death Grips is not your average hiphop group. I think they di
 
 ### FMO self-similarity cepstrogram
 
-``` {r, self-similarity}
+``` {r}
 fmo <-
   get_tidy_audio_analysis("3d2k4INhmRO6becJmIBCSS") %>% 
-  compmus_align(sections, segments) %>%                  
-  select(sections) %>%                                    
-  unnest(sections) %>%                                      
+  compmus_align(bars, segments) %>%                  
+  select(bars) %>%                                    
+  unnest(bars) %>%                                      
   mutate(
     pitches =
       map(segments,
@@ -173,7 +177,13 @@ fmo %>%
 
 ***
 
-According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. Usually, you'd expect a clear difference between the verses and the chorus. 
+According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs.
+
+I think there is so much going on in the same c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), the second basic function emphasizes brightness. This makes it really noisy 
+
+What is also interesting is that we see switching between coefficients 3 and 4.
+
+
 
 ### FMO self-similarity matrice
 
@@ -195,6 +205,9 @@ fmo %>%
   theme_classic() +
   labs(x = "", y = "")
 ```
+
+Looks like the song is quite similar to itself. That's funny. 
+
 
 ### Conclusion
 

@@ -809,10 +809,11 @@ html, body {
 </div><!--/.container-->
 </div><!--/.navbar-->
 
-<img class="mobile-figure" data-mobile-figure-id=fig1 src="index_files/figure-html/plots-1.mb.png" />
-<img class="mobile-figure" data-mobile-figure-id=fig2 src="index_files/figure-html/compus%20chromagram-1.mb.png" />
-<img class="mobile-figure" data-mobile-figure-id=fig3 src="index_files/figure-html/self-similarity-1.mb.png" />
-<img class="mobile-figure" data-mobile-figure-id=fig4 src="index_files/figure-html/unnamed-chunk-2-1.mb.png" />
+<img class="mobile-figure" data-mobile-figure-id=fig1 src="index_files/figure-html/unnamed-chunk-1-1.mb.png" />
+<img class="mobile-figure" data-mobile-figure-id=fig2 src="index_files/figure-html/unnamed-chunk-2-1.mb.png" />
+<img class="mobile-figure" data-mobile-figure-id=fig3 src="index_files/figure-html/compus%20chromagram-1.mb.png" />
+<img class="mobile-figure" data-mobile-figure-id=fig4 src="index_files/figure-html/unnamed-chunk-3-1.mb.png" />
+<img class="mobile-figure" data-mobile-figure-id=fig5 src="index_files/figure-html/unnamed-chunk-4-1.mb.png" />
 <script type="text/javascript">
 
 
@@ -2614,53 +2615,72 @@ window.FlexDashboardComponents.push({
 <li>Is their most popular music their least experimental music?</li>
 <li>How did Death Grips’ music change over time? Has Death Grips become more experimental over time?</li>
 </ul>
-<p>In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.</p>
-<img src="https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp" title="fig:" alt="MC Ride" />
-<div class="knitr-options" data-fig-width="288" data-fig-height="288">
-
+<p>In summary, I will be analyzing i) what makes Death Grips experimental and ii) how Death Grips changed over time. My research will be based on the data of 7 albums and 1 EP.</p>
+<div class="figure">
+<img src="https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp" alt="" />
+<p class="caption">MC Ride</p>
 </div>
+<style type="text/css">
+  img {   
+      display: block;
+      width: 250px;
+      }
+</style>
 <hr />
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6BoVVeeH3vmrHlgivNbefW?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
 </iframe>
 </div>
-<div id="too-energetic" class="section level3">
-<h3>Too energetic?</h3>
+<div id="why-death-grips-gives-you-adrenaline" class="section level3">
+<h3>Why Death Grips gives you adrenaline</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><img src="index_files/figure-html/plots-1.png" width="576" data-figure-id=fig1 /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="576" data-figure-id=fig1 /></p>
 <hr />
 <p>Before making this plot, I expected the energy levels of Death grips’ music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible.</p>
+<p>The Spotify API tells us that energy “represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”.</p>
 <p>We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.</p>
 <p>Funny enough, there is one dot at far left. Apparently there is a song on <em>Interview 2016</em> which is consequently Death Grips’ least energetic song.</p>
 <p>Also, <em>No Love Deep Web</em> is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are <strong>Death Grips</strong>. They definitely did not held back on purpose.</p>
 <p>Their music did not get less or more energetic over time. ???</p>
-<p>So, we can state that the remarkable high energy levels of Death Grips’ music is part of what makes it experimental. This will help in researching whether their most popular music their least experimental music.</p>
+<p>So, we can state that the remarkable high energy levels of Death Grips’ music is part of what makes it so agressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to agressiveness, so that’s what we’ll look at in the next part.</p>
 </div>
-<div id="most-popular-song" class="section level3">
-<h3>Most popular song</h3>
+<div id="why-death-grips-does-not-make-you-much-happier" class="section level3">
+<h3>Why Death Grips does not make you much happier</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><img src="index_files/figure-html/compus%20chromagram-1.png" width="576" data-figure-id=fig2 /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="576" data-figure-id=fig2 /></p>
+<p>Their happiest song is <em>System Blower</em>, which I think is very funny. <em>The Powers that B</em> is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that <em>The Powers That B</em> is Death Grips’ most agressive album.</p>
+</div>
+<div id="get-get-get-get-got-got-got-got" class="section level3">
+<h3>Get get get get got got got got</h3>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<p><img src="index_files/figure-html/compus%20chromagram-1.png" width="576" data-figure-id=fig3 /></p>
 <hr />
-<p>This chromagram is made from the song <em>Get Got</em>, Death Grips’ most popular song. As you can see, the chromagram is just as messy as the song, which makes sense.</p>
+<p>Death Grips’ most popular song is <em>Get Got</em>. It is, ofcourse, a very energetic song. As you can see, the chromagram is just as messy as the song, which makes sense. (Why? lol) However, it is not weird for a chromagram of a hiphop song to look like this. Hiphop is mostly defined by its rythm. // We distuinguish hiphop mostly by its rythm.</p>
+<p>On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence,</p>
 </div>
 <div id="fmo-self-similarity-cepstrogram" class="section level3">
 <h3>FMO self-similarity cepstrogram</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><img src="index_files/figure-html/self-similarity-1.png" width="576" data-figure-id=fig3 /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig4 /></p>
 <hr />
 <p>According to a reddit discussion, <em>Fuck Me Out</em> is one of Death Grips’ most experimental songs.</p>
+<p>I think there is so much going on in the same c02. According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis">Spotify API</a>, the second basic function emphasizes brightness. This makes it really noisy</p>
+<p>What is also interesting is that we see switching between coefficients 3 and 4.</p>
 </div>
 <div id="fmo-self-similarity-matrice" class="section level3">
 <h3>FMO self-similarity matrice</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="576" data-figure-id=fig4 /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" data-figure-id=fig5 /></p>
+<p>Looks like the song is quite similar to itself. That’s funny.</p>
 </div>
 <div id="conclusion" class="section level3">
 <h3>Conclusion</h3>
