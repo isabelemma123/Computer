@@ -40,7 +40,7 @@ fig.height=3
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6BoVVeeH3vmrHlgivNbefW?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-### Too energetic?
+### Why Death Grips gives you adrenaline
 
 ``` {r plots}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
@@ -100,7 +100,7 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
 
 Their happiest song is *System Blower*, which I think is very funny. *The Powers that B* is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most agressive album.
 
-### Most popular song
+### Get get get get got got got got
 
 ```{r compus chromagram}
 remotes::install_github('jaburgoyne/compmus')
@@ -128,7 +128,7 @@ getgot %>%
 
 ***
 
-This chromagram is made from the song *Get Got*, Death Grips' most popular song. As you can see, the chromagram is just as messy as the song, which makes sense. However, it is not weird for a chromagram of a hiphop song to look like this. Hiphop is mostly defined by its rythm. // We distuinguish hiphop mostly by its rythm.
+Death Grips' most popular song is *Get Got*. It is, ofcourse, a very energetic song. As you can see, the chromagram is just as messy as the song, which makes sense. (Why? lol) However, it is not weird for a chromagram of a hiphop song to look like this. Hiphop is mostly defined by its rythm. // We distuinguish hiphop mostly by its rythm.
 
 On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence, 
 
@@ -173,7 +173,7 @@ fmo %>%
 
 ***
 
-According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. 
+According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. Usually, you'd expect a clear difference between the verses and the chorus. 
 
 ### FMO self-similarity matrice
 
