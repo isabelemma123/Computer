@@ -13,6 +13,7 @@ library(plotly)
 library(spotifyr)
 library(tidyverse)
 library(ggplot2)
+library(compmus)
 ```
 
 ### Meet Death Grips
@@ -26,9 +27,13 @@ library(ggplot2)
 - How did Death Grips' music change over time? Has Death Grips become more experimental over time?
 
 In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
-```{r}
-```
 
+![MC Ride](https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp)
+```{r, fig.width=3, fig.height=3}
+fig.width=3
+fig.height=3
+```
+  
 ***
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6BoVVeeH3vmrHlgivNbefW?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -36,9 +41,6 @@ In summary, I will be analyzing i) how Death Grips changed over time and ii) wha
 ### Too energetic?
 
 ``` {r plots}
-library(tidyverse)
-library(spotifyr)
-library(dplyr)
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus 
@@ -75,9 +77,6 @@ So, we can state that the remarkable high energy levels of Death Grips' music is
 
 ```{r compus chromagram}
 remotes::install_github('jaburgoyne/compmus')
-library(tidyverse)
-library(spotifyr)
-library(compmus)
 getgot <-
   get_tidy_audio_analysis("781V2Y5LPtcpgONEOadadE") %>%
   select(segments) %>%
