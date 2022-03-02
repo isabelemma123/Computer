@@ -28,6 +28,8 @@ library(compmus)
 
 In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
 
+
+
 ![MC Ride](https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp)
 ```{r, fig.width=3, fig.height=3}
 fig.width=3
@@ -103,7 +105,7 @@ getgot %>%
 
 This chromagram is made from the song *Get Got*, Death Grips' most popular song. As you can see, the chromagram is just as messy as the song, which makes sense. 
 
-### Self-similarity
+### FMO self-similarity cepstrogram
 
 ``` {r, self-similarity}
 fmo <-
@@ -145,6 +147,27 @@ fmo %>%
 ***
 
 According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. 
+
+### FMO self-similarity matrice
+
+``` {r}
+fmo %>%
+  compmus_self_similarity(timbre, "cosine") %>% 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(x = "", y = "")
+```
 
 ### Conclusion
 
