@@ -38,7 +38,6 @@ In summary, I will be analyzing i) what makes Death Grips experimental and ii) h
       }
 </style>
 
-
   
 ***
 
@@ -101,6 +100,8 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
     axis.text.x = element_blank()) +
     coord_flip()
 ```
+
+***
 
 Their happiest song is *System Blower*, which I think is very funny. *The Powers that B* is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most agressive album.
 
@@ -183,8 +184,6 @@ I think there is so much going on in the same c02. According to the [Spotify API
 
 What is also interesting is that we see switching between coefficients 3 and 4.
 
-
-
 ### FMO self-similarity matrice
 
 ``` {r}
@@ -205,6 +204,8 @@ fmo %>%
   theme_classic() +
   labs(x = "", y = "")
 ```
+
+***
 
 Looks like the song is quite similar to itself. That's funny. 
 
