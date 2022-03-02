@@ -5,6 +5,7 @@ output:
     storyboard: true
     theme: yeti
     self_contained: false
+    smooth_scroll: true
 ---
 
 ```{r setup, include=FALSE}
@@ -30,11 +31,10 @@ In summary, I will be analyzing i) what makes Death Grips experimental and ii) h
 
 ![MC Ride](https://www.magneticmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTQzOTk4NDc1MjkyMzg3MjA2/death-grips-1jpg.webp) 
 
-
 <style type="text/css">
   img {   
       display: block;
-      width: 250px;
+      width: 100px;
       }
 </style>
 
@@ -100,6 +100,7 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
     axis.text.x = element_blank()) +
     coord_flip()
 ```
+
 
 ***
 
