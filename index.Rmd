@@ -179,11 +179,13 @@ fmo %>%
 
 ***
 
-According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs.
+According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. Let's see if we can find out why it is experimental, according to this cepstrogram.
 
-I think there is so much going on in the same c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), the second basic function emphasizes brightness. This makes it really noisy 
+On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes brightness. I can imagine that a song with this much brightness and very less loudness and flatness is experimental.
 
-What is also interesting is that we see switching between coefficients 3 and 4.
+We can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays very frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
+
+Furthermore, we see switching between coefficients 3 and 4 in section 0-40 seconds and section 60-90 seconds.
 
 ### FMO self-similarity matrice
 
