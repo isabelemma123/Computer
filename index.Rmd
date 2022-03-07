@@ -77,7 +77,8 @@ In summary, I will be analyzing what makes Death Grips experimental. My research
 ``` {r}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
-corpus_new <- corpus 
+corpus_new <- corpus %>%
+  arrange(track.album.release_date)
 ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
   geom_boxplot(fill = "#00A6C7") +
   labs(x = "",
