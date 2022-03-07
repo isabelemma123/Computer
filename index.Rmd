@@ -43,13 +43,13 @@ library(compmus)
 
 ### Meet Death Grips
 
-**Death Grips** is an experimental hiphop band with three members. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
+**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
 
 *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. With the release of *Exmilitary*, Death Grips introduced the world to a refreshing blend of punk rock, hip-hop and industrial music.
 
 In total, Death Grips released 8 albums. *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. For that same reason, I will unfortunately not be able to take *Exmilitary* into account in this research. This is a loss, since the release of *Exmilitary* introduced the world to Death Grips' refreshing blend of punk rock, hip-hop and industrial music. 
 
-Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is also an instrumental one. Therefore, it will be valuable to expand my data. And just so it has been mentioned: one of these seven albums is actually a double album and another one is an intrumental album. With data attained by Spotify's API, I will be focussing on the following questions:
+Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is also an instrumental one. Therefore, it will be valuable to expand my data. And just so it has been mentioned: one of these seven albums is actually a double album and another one is an intrumental album. With data attained by [Spotify's API](https://developer.spotify.com), I will be focussing on the following questions:
 
 - What makes Death Grips so experimental and inaccessible? 
 - How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?
@@ -97,17 +97,17 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
 
 Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
 
-The Spotify API tells us that energy "represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”.
+According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
 
 We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.
 
-Funny enough, there is one dot at far left. Apparently there is a song on *Interview 2016* which is consequently Death Grips' least energetic song. 
+Funny enough, there is one dot at far left. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
 
 Also, *No Love Deep Web* is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are **Death Grips**. They definitely did not held back on purpose.
 
 Their music did not get less or more energetic over time. ???
 
-So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so agressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to agressiveness, so that's what we'll look at in the next part.
+So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
 
 ### Why Death Grips does not make you much happier
 
@@ -133,7 +133,9 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
 
 ***
 
-Their happiest song is *System Blower*, which I think is very funny. *The Powers that B* is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most agressive album.
+It becomes clear that *Interviews 2016* is Death Grips' happiest album. It is an instrumental album, which would lead us to the conclusion that maybe MC Ride has a big role in making the music sad and/or angry. However, the other instrumental album *Fashion Week* has a much lower valence than *Interviews 2016*. It is maybe a bit misleading that there are three points not included in the box of *Fashion Week*, but the median valence of the album is still low.
+
+*The Powers that B* is their least happy album. However, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most aggressive album.
 
 ### Most popular song
 
