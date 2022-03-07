@@ -1,5 +1,6 @@
 ---
-title: "Index"
+title: "Experimental Death Grips"
+author: "Isabel Prost - 2022"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -44,7 +45,11 @@ library(compmus)
 
 **Death Grips** is an experimental hiphop band with three members. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
 
-*The Money Store* (2012) is their most popular album. In total, they released 8 albums, including one instrumental album and a mixtape. I chose to exclude the mixtape *Exmilitary*, because it is not on Spotify (it includes uncleared samples). And just so it has been mentioned: one of these seven albums is actually a double album. Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is an instrumental one. Therefore, it will be valuable to expand my data. I will be focussing on the following questions:
+*The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. With the release of *Exmilitary*, Death Grips introduced the world to a refreshing blend of punk rock, hip-hop and industrial music.
+
+In total, Death Grips released 8 albums. *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. For that same reason, I will unfortunately not be able to take *Exmilitary* into account in this research. This is a loss, since the release of *Exmilitary* introduced the world to Death Grips' refreshing blend of punk rock, hip-hop and industrial music. 
+
+Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is also an instrumental one. Therefore, it will be valuable to expand my data. And just so it has been mentioned: one of these seven albums is actually a double album and another one is an intrumental album. With data attained by Spotify's API, I will be focussing on the following questions:
 
 - What makes Death Grips so experimental and inaccessible? 
 - How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?
