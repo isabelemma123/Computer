@@ -23,20 +23,14 @@ window.FlexDashboardComponents = [];
 
 <script src="index_files/header-attrs-2.11/header-attrs.js"></script>
 <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="index_files/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
-<script src="index_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="index_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="index_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="index_files/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+<script src="index_files/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+<link href="index_files/_Sen-0.4.0/font.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains%20Mono&amp;display=swap" rel="stylesheet"/>
+<script src="index_files/bs3compat-0.3.1/transition.js"></script>
+<script src="index_files/bs3compat-0.3.1/tabs.js"></script>
+<script src="index_files/bs3compat-0.3.1/bs3compat.js"></script>
 <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <script src="index_files/sly-1.6.1/sly.min.js"></script>
@@ -736,32 +730,6 @@ table.dataTable thead th {
 }
 
 
-
-body {
-  padding-top: 54px;
-}
-
-.section.sidebar {
-  top: 45px;
-  background-color: rgba(0, 140, 186, 0.1);
-}
-
-.value-box {
-  color: inherit;
-}
-
-.bg-primary {
-  background-color: rgba(0, 140, 186, 0.3);
-}
-
-.storyboard-nav .sbframelist ul li.active {
-  background-color: rgba(0, 140, 186, 0.7);
-}
-
-
-.nav-tabs-custom > .nav-tabs > li.active {
-  background-color: rgba(0, 140, 186, 0.7);
-}
 
 @media only screen and (min-width: 768px) {
 html, body {
@@ -2606,16 +2574,25 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
+<style>                     
+.navbar {
+  background-color: #E77F17
+}
+.navbar-brand {
+color:black!important;
+}
+</style>
 <div id="meet-death-grips" class="section level3">
 <h3>Meet Death Grips</h3>
-<p><strong>Death Grips</strong> is an experimental hiphop band with three members. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips’ music. The goal of this research is to analyze their music and by that, find out how Death Grips’ music changed over time.</p>
-<p><em>The Money Store</em> (2012) is their most popular album. In total, they released 8 albums, including one instrumental album and a mixtape. I chose to exclude the mixtape <em>Exmilitary</em>, because it is not on Spotify (it includes uncleared samples). And just so it has been mentioned: one of these seven albums is actually a double album. Next to the seven remaining albums, I will include their EP <em>Death Grips</em>. This EP is an instrumental one. Therefore, it will be valuable to expand my data. Like mentioned before, I want to compare the different albums throughout the years. I will be focussing on the following questions:</p>
+<p><strong>Death Grips</strong> is an experimental hiphop band with three members. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips’ music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.</p>
+<p><em>The Money Store</em> (2012) is their most popular album. In total, they released 8 albums, including one instrumental album and a mixtape. I chose to exclude the mixtape <em>Exmilitary</em>, because it is not on Spotify (it includes uncleared samples). And just so it has been mentioned: one of these seven albums is actually a double album. Next to the seven remaining albums, I will include their EP <em>Death Grips</em>. This EP is an instrumental one. Therefore, it will be valuable to expand my data. I will be focussing on the following questions:</p>
 <ul>
-<li>What makes Death Grips so experimental and inaccessible? How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?</li>
+<li>What makes Death Grips so experimental and inaccessible?</li>
+<li>How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?</li>
 <li>Is their most popular music their least experimental music?</li>
-<li>How did Death Grips’ music change over time? Has Death Grips become more experimental over time?</li>
+<li>Has Death Grips become more experimental over time?</li>
 </ul>
-<p>In summary, I will be analyzing i) what makes Death Grips experimental and ii) how Death Grips changed over time. My research will be based on the data of 7 albums and 1 EP.</p>
+<p>In summary, I will be analyzing what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.</p>
 <hr />
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6BoVVeeH3vmrHlgivNbefW?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
 </iframe>
@@ -2626,7 +2603,7 @@ window.FlexDashboardComponents.push({
 <style type="text/css">
   img {   
       display: block;
-      width: 300px;
+      width: 275px;
       }
 </style>
 </div>
@@ -2654,8 +2631,8 @@ window.FlexDashboardComponents.push({
 <hr />
 <p>Their happiest song is <em>System Blower</em>, which I think is very funny. <em>The Powers that B</em> is their least happy album. Howver, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that <em>The Powers That B</em> is Death Grips’ most agressive album.</p>
 </div>
-<div id="get-get-get-get-got-got-got-got" class="section level3">
-<h3>Get get get get got got got got</h3>
+<div id="most-popular-song" class="section level3">
+<h3>Most popular song</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
@@ -2664,16 +2641,17 @@ window.FlexDashboardComponents.push({
 <p>Death Grips’ most popular song is <em>Get Got</em>. It is, ofcourse, a very energetic song. As you can see, the chromagram is just as messy as the song, which makes sense. (Why? lol) However, it is not weird for a chromagram of a hiphop song to look like this. Hiphop is mostly defined by its rythm. // We distuinguish hiphop mostly by its rythm.</p>
 <p>On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence,</p>
 </div>
-<div id="fmo-self-similarity-cepstrogram" class="section level3">
-<h3>FMO self-similarity cepstrogram</h3>
+<div id="most-experimental-song" class="section level3">
+<h3>Most experimental song</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="576" data-figure-id=fig4 /></p>
 <hr />
-<p>According to a reddit discussion, <em>Fuck Me Out</em> is one of Death Grips’ most experimental songs.</p>
-<p>I think there is so much going on in the same c02. According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis">Spotify API</a>, the second basic function emphasizes brightness. This makes it really noisy</p>
-<p>What is also interesting is that we see switching between coefficients 3 and 4.</p>
+<p>According to a reddit discussion, <em>Fuck Me Out</em> is one of Death Grips’ most experimental songs. Let’s see if we can find out why it is experimental, according to this cepstrogram.</p>
+<p>On first glance, it is clear that there is much going on in c02. According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis">Spotify API</a>, this second basic function emphasizes <strong>brightness</strong>. I can imagine that a song with this much brightness and less loudness and flatness is experimental.</p>
+<p>We see switching between coefficients 3 and 4 in section 0-40 seconds and section 60-90 seconds.</p>
+<p>Furthermore, we can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays very frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.</p>
 </div>
 <div id="fmo-self-similarity-matrice" class="section level3">
 <h3>FMO self-similarity matrice</h3>
@@ -2712,7 +2690,7 @@ $(document).ready(function () {
 <script type="text/javascript">
 $(document).ready(function () {
   FlexDashboard.init({
-    theme: "yeti",
+    theme: "4",
     fillPage: true,
     orientation: "columns",
     storyboard: true,
