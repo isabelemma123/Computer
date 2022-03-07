@@ -8,7 +8,7 @@ output:
       version: 4
       bg: "#101010"
       fg: "#000000" 
-      primary: "#ED79F9"
+      primary: "#C70039"
       navbar-bg: "#C70039"
       base_font: 
         google: Sen
@@ -79,7 +79,7 @@ corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus 
 ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
-  geom_boxplot(fill = "#00abff") +
+  geom_boxplot(fill = "#00A6C7") +
   labs(x = "",
     y = "energy" ,
     title = "Energy per album" ,
@@ -116,7 +116,7 @@ corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus 
 ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
-  geom_boxplot(fill = "#00abff") +
+  geom_boxplot(fill = "#00A6C7") +
   labs(x = "",
     y = "valence" ,
     title = "Valence per album" ,
