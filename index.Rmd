@@ -170,7 +170,7 @@ Death Grips' most popular song is *Get Got*. It is, ofcourse, a very energetic s
 
 On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence, 
 
-### Most experimental song (ceptsrogram)
+### Most experimental songs (ceptsrogram)
 
 ``` {r}
 fmo <-
@@ -204,7 +204,44 @@ fmo %>%
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(title = "Fuck me out", x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+``` {r}
+hh <-
+  get_tidy_audio_analysis("4Z79ArOZZjYYaq4CGbBxa1") %>% 
+  compmus_align(bars, segments) %>%                  
+  select(bars) %>%                                    
+  unnest(bars) %>%                                      
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"
+      )
+  )
+
+hh %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(title = "Hot Head", x = "Time (s)", y = NULL, fill = "Magnitude") +
   scale_fill_viridis_c() +                              
   theme_classic()
 ```
@@ -213,13 +250,19 @@ fmo %>%
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3d2k4INhmRO6becJmIBCSS?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. Let's see if we can find out why it is experimental, according to this cepstrogram.
+According to a reddit discussion, it is suggested that *Fuck Me Out* and *Hot Head* are two of Death Grips' most experimental songs. Let's see if we can find out why they are experimental, according to their cepstrograms.
+
+***Fuck Me Out***
 
 On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. I can imagine that a song with this much brightness and less loudness and flatness is experimental.
 
 We see switching between coefficients 3 and 4 in section 0-40 seconds and section 60-90 seconds. 
 
 Furthermore, we can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays loud and frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
+
+***Hot Head***
+
+Yeah.
 
 ### Most experimental song (self-similarity matrice)
 
@@ -239,7 +282,7 @@ fmo %>%
   coord_fixed() +
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
-  labs(x = "", y = "")
+  labs(title = "Fuck me out", x = "", y = "")
 ```
 
 ***
