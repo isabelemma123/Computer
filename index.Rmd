@@ -1,6 +1,6 @@
 ---
 title: "Experimentalness of Death Grips"
-author: "Isabel Prost - 2022"
+author: "Isabel Prost | 13121685 - March 2022"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
