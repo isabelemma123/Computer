@@ -264,11 +264,11 @@ According to a reddit discussion, it is suggested that *Fuck Me Out* and *Hot He
 
 ***Fuck Me Out***
 
-On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. I can imagine that a song with this much brightness and less loudness and flatness is experimental.
+On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. This brightness should not be confused with lightness or easy listening: "In audio production brightness refers to upper mid and high frequency content. Increased levels of mid and high frequency content are referred to as brighter" [(Quora)](https://www.quora.com/What-defines-brightness-darkness-in-music-Are-these-properties-considered-color-or-harmonics-both-or-none-of-the-above). I do recognize this in *Fuck Me Out*.
 
-We see switching between coefficients 3 and 4 in section 0-40 seconds and section 60-90 seconds. 
+- In section 0-40 seconds and section 60-90 seconds, coefficients 3 and 4 alternate. Explain...
 
-Furthermore, we can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays loud and frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
+- Between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays loud and frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
 
 ***Hot Head***
 
