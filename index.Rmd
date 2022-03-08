@@ -286,7 +286,7 @@ fmo %>%
   coord_fixed() +
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
-  labs(title = "Fuck me out", x = "", y = "")
+  labs(title = "Timbre of 'Fuck me out'", x = "", y = "")
 ```
 
 ***
