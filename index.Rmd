@@ -1,5 +1,5 @@
 ---
-title: "Experimental Death Grips"
+title: "Experimentalness of Death Grips"
 author: "Isabel Prost - 2022"
 output: 
   flexdashboard::flex_dashboard:
@@ -170,7 +170,7 @@ Death Grips' most popular song is *Get Got*. It is, ofcourse, a very energetic s
 
 On the other hand, Death Grips is not your average hiphop group. I think they distuinguish themselves by their high energylevels, their low valence, 
 
-### Most experimental song
+### Most experimental song (ceptsrogram)
 
 ``` {r}
 fmo <-
@@ -211,15 +211,17 @@ fmo %>%
 
 ***
 
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3d2k4INhmRO6becJmIBCSS?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 According to a reddit discussion, *Fuck Me Out* is one of Death Grips' most experimental songs. Let's see if we can find out why it is experimental, according to this cepstrogram.
 
 On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. I can imagine that a song with this much brightness and less loudness and flatness is experimental.
 
 We see switching between coefficients 3 and 4 in section 0-40 seconds and section 60-90 seconds. 
 
-Furthermore, we can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays very frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
+Furthermore, we can see that between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays loud and frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
 
-### FMO self-similarity matrice
+### Most experimental song (self-similarity matrice)
 
 ``` {r}
 fmo %>%
@@ -242,7 +244,11 @@ fmo %>%
 
 ***
 
-Looks like the song is quite similar to itself. That's funny. 
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3d2k4INhmRO6becJmIBCSS?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+Looks like the song is quite similar to itself. Somehow I expected a experimental song to differ from itself at various moments. However, after seeing this self-similarity matrice, it makes sense. I think the song is still experimental, just the same experimentalness throughout the song. There is so much happening in the song, that it does the fact that the same thing is happening throughout the song does not make the song less experimental: you still won't get used to the chaotic sounds.
+
+Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This hihat type of sound can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
 
 
 ### Conclusion
