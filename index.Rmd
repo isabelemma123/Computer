@@ -180,7 +180,9 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 ### Most experimental songs (ceptsrogram)
 
-``` {r, figures-side, fig.show="hold", out.width="50%"}
+``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
+library(gridExtra)
+
 fmo <-
   get_tidy_audio_analysis("3d2k4INhmRO6becJmIBCSS") %>% 
   compmus_align(bars, segments) %>%                  
@@ -201,9 +203,9 @@ fmo <-
       )
   )
 
-fmo %>%
+plot1 <- fmo %>%
   compmus_gather_timbre() %>%
-  ggplot(
+    ggplot(
     aes(
       x = start + duration / 2,
       width = duration,
@@ -236,9 +238,9 @@ hh <-
       )
   )
 
-hh %>%
+plot2 <- hh %>%
   compmus_gather_timbre() %>%
-  ggplot(
+    ggplot(
     aes(
       x = start + duration / 2,
       width = duration,
@@ -250,6 +252,8 @@ hh %>%
   labs(title = "Hot Head", x = "Time (s)", y = NULL, fill = "Magnitude") +
   scale_fill_viridis_c() +                              
   theme_classic()
+
+grid.arrange(plot1, plot2, ncol=2)
 ```
 
 ***
