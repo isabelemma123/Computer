@@ -180,7 +180,7 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 ### Most experimental songs (ceptsrogram)
 
-``` {r}
+``` {r, figures-side, fig.show="hold", out.width="50%"}
 fmo <-
   get_tidy_audio_analysis("3d2k4INhmRO6becJmIBCSS") %>% 
   compmus_align(bars, segments) %>%                  
@@ -215,9 +215,7 @@ fmo %>%
   labs(title = "Fuck me out", x = "Time (s)", y = NULL, fill = "Magnitude") +
   scale_fill_viridis_c() +                              
   theme_classic()
-```
 
-``` {r}
 hh <-
   get_tidy_audio_analysis("4Z79ArOZZjYYaq4CGbBxa1") %>% 
   compmus_align(bars, segments) %>%                  
@@ -264,7 +262,7 @@ According to a reddit discussion, it is suggested that *Fuck Me Out* and *Hot He
 
 ***Fuck Me Out***
 
-On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. This brightness should not be confused with lightness or easy listening: "In audio production brightness refers to upper mid and high frequency content. Increased levels of mid and high frequency content are referred to as brighter" [(Quora)](https://www.quora.com/What-defines-brightness-darkness-in-music-Are-these-properties-considered-color-or-harmonics-both-or-none-of-the-above). I do recognize this in *Fuck Me Out*.
+On first glance, it is clear that there is much going on in c02. According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), this second basic function emphasizes **brightness**. This brightness should not be confused with lightness or easy listening: "In audio production brightness refers to upper mid and high frequency content. Increased levels of mid and high frequency content are referred to as brighter" ([Quora](https://www.quora.com/What-defines-brightness-darkness-in-music-Are-these-properties-considered-color-or-harmonics-both-or-none-of-the-above)). I do recognize this in *Fuck Me Out*.
 
 - In section 0-40 seconds and section 60-90 seconds, coefficients 3 and 4 alternate. Explain...
 
@@ -272,7 +270,9 @@ On first glance, it is clear that there is much going on in c02. According to th
 
 ***Hot Head***
 
-Yeah.
+First, notice the similarities of the two cepstrograms. This suggests that both *Fuck Me Out* and *Hot Head* are songs with a lot of brightness. However, *Hot Head*'s cepstrogram does differ from the one of *Fuck Me Out*: it bleeds out more to c01 & c03, and c06 lights up significantly more. 
+
+A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I think it's because the song is simply longer than *Fuck Me Out*, almost a full minute. Therefore, there is more information in the same plot size, which makes it more detailed.
 
 ### Most experimental song (self-similarity matrice)
 
@@ -301,9 +301,9 @@ fmo %>%
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z79ArOZZjYYaq4CGbBxa1?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-Looks like the song is quite similar to itself. Somehow I expected a experimental song to differ from itself at various moments. However, after seeing this self-similarity matrice, it makes sense. I think the song is still experimental, just the same experimentalness throughout the song. There is so much happening in the song, that it does the fact that the same thing is happening throughout the song does not make the song less experimental: you still won't get used to the chaotic sounds.
+Looks like the song is quite similar to itself. Somehow I expected a experimental song to differ from itself at various moments. However, after seeing this self-similarity matrice, it makes sense. I think the song is still experimental, just the same experimentalness throughout the song. There is so much happening in the song, that the fact that the same thing is happening throughout the song does not make the song less experimental: you still won't get used to the chaotic sounds.
 
-Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This hihat type of sound can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
+Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This type of hihat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
 
 
 ### Conclusion
