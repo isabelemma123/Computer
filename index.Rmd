@@ -43,7 +43,7 @@ library(compmus)
 
 ### Meet Death Grips
 
-**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the Spotify API would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
+**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the [Spotify's API](https://developer.spotify.com) would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
 
 *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. With the release of *Exmilitary*, Death Grips introduced the world to a refreshing blend of punk rock, hip-hop and industrial music.
 
@@ -52,7 +52,7 @@ In total, Death Grips released 8 albums. *The Money Store* (2012) is their most 
 Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is also an instrumental one. Therefore, it will be valuable to expand my data. And just so it has been mentioned: one of these seven albums is actually a double album and another one is an intrumental album. With data attained by [Spotify's API](https://developer.spotify.com), I will be focussing on the following questions:
 
 - What makes Death Grips so experimental and inaccessible? 
-- How can we distinguish this ‘experimentalness’ with the data gained from Spotify’s API?
+- How can we distinguish this ‘experimentalness’ with the data gained from [Spotify's API](https://developer.spotify.com)?
 - Is their most popular music their least experimental music?
 - Has Death Grips become more experimental over time?
 
@@ -303,6 +303,7 @@ I found out albums where MC Ride is rapping, do not work well in chordograms. Th
 Luckily, I've included two instrumental albums in my corpus. MC Ride may fool the chordograms, but Zach and Andy provide us more clear ones. After a long search (thanks to Death Grips for making ungraspable music), I finally found a song that shows a clear melody: *Runway H*. 
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0AUtK92LWcv3wbpv6NkhKr?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 
 The sections with bright yellow contain a very sharp sound. Remember, bright yellow means that it is **not** that chord. Consequently, the most dark blue means it is definitely that chord.
 
