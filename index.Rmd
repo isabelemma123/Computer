@@ -438,9 +438,25 @@ Looks like the song is quite similar to itself. Somehow I expected a experimenta
 
 Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This type of hihat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
 
-### Conclusion
+### Novelty function
 
 ```{r}
+ums1 <-
+  get_tidy_audio_analysis("0Fk81iRERCjpV5Ww9Wfb3g") %>%
+  select(segments) %>%
+  unnest(segments)
 
+ums1 %>%
+  mutate(loudness_max_time = start + loudness_max_time) %>%
+  arrange(loudness_max_time) %>%
+  mutate(delta_loudness = loudness_max - lag(loudness_max)) %>%
+  ggplot(aes(x = loudness_max_time, y = pmax(0, delta_loudness))) +
+  geom_line() +
+  xlim(25, 40) +
+  theme_minimal() +
+  labs(x = "Time (s)", y = "Novelty")
 ```
 
+***
+
+Import tempogram
