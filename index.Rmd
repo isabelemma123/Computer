@@ -452,11 +452,19 @@ ums1 %>%
   mutate(delta_loudness = loudness_max - lag(loudness_max)) %>%
   ggplot(aes(x = loudness_max_time, y = pmax(0, delta_loudness))) +
   geom_line() +
-  xlim(25, 40) +
+  xlim(25, 50) +
   theme_minimal() +
   labs(x = "Time (s)", y = "Novelty")
 ```
 
 ***
 
-Import tempogram
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Fk81iRERCjpV5Ww9Wfb3g?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-50 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-50 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
+
+For similar reasons, the tempogram of *Up My Sleeves* is hard to read, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds).
+
+**How do I import an internal image of the tempogram?** I get: "No image path" error...
+
+![Tempogram](/Users/isabel/Documents/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png)
