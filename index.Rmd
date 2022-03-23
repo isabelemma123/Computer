@@ -407,7 +407,7 @@ A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I
 
 ### Most experimental song (self-similarity matrice)
 
-``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
+``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
 library(gridExtra)
 
 fmo %>%
