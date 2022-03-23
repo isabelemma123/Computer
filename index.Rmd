@@ -407,7 +407,9 @@ A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I
 
 ### Most experimental song (self-similarity matrice)
 
-``` {r}
+``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
+library(gridExtra)
+
 fmo %>%
   compmus_self_similarity(timbre, "cosine") %>% 
   ggplot(
@@ -424,6 +426,23 @@ fmo %>%
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
   labs(title = "Timbre of 'Fuck me out'", x = "Time (s)", y = "Time (s)")
+
+hh %>%
+  compmus_self_similarity(timbre, "cosine") %>% 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(title = "Timbre of 'Hot Head'", x = "Time (s)", y = "Time (s)")
 ```
 
 ***
@@ -432,9 +451,11 @@ fmo %>%
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z79ArOZZjYYaq4CGbBxa1?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-Looks like the song is quite similar to itself. Somehow I expected a experimental song to differ from itself at various moments. However, after seeing this self-similarity matrice, it makes sense. I think the song is still experimental, just the same experimentalness throughout the song. There is so much happening in the song, that the fact that the same thing is happening throughout the song does not make the song less experimental: you still won't get used to the chaotic sounds.
+Looks like the timbre of *Fuck me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This type of hihat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
 
-Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This type of hihat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
+*Hot Head* is even more extremely self-similar than *Fuck Me Out*. The ending is the most "unique" compared to the rest of the song, because we can hear just one note getting louder and higher. This sound is heard often throughout the rest of the song, but then it's probably overruled by other sounds we can hear. These other sounds are absent in the last few seconds of the song, which is why the API reads those last few seconds as less similar to the rest of the song.
+
+Somehow I expected an experimental song to differ from itself at various moments. However, after seeing these self-similarity matrices, it makes sense. I think the songs are still very experimental, just the same experimentalness throughout the song. There is so much happening in the songs, that the fact that the same thing is happening throughout the song does not make the songs less experimental: you still won't get used to the chaotic sounds.
 
 ### Novelty function
 
