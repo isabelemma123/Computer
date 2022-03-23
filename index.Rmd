@@ -78,19 +78,23 @@ In summary, I will be analyzing what makes Death Grips experimental. My research
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus %>%
-  arrange(track.album.release_date)
-ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
+  mutate(album = factor(track.album.name, levels=c("Year Of The Snitch", "Bottomless Pit", "Interview 2016", "Fashion Week", "The Powers That B", "Government Plates", "The Money Store", "No Love Deep Web")))
+ggplot(data = corpus_new, aes(x = album, y  = energy)) +
   geom_boxplot(fill = "#00A6C7") +
-  labs(x = "",
+  theme_minimal() +
+  theme(
+    title = element_text(color = "gray25"),
+    plot.caption = element_text(color = "gray25"),
+    axis.line.y = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
+                                                       ends = "both")),
+        axis.title.y = element_text(angle = 0)) +
+  scale_y_continuous(name="Energy", limits=c(0, 1)) +
+  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
     y = "energy" ,
     title = "Energy per album" ,
     subtitle = "",
     caption = "Data source: Spotify API") +
-  theme_minimal() +
-  theme(
-    title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25")) +
-    coord_flip()
+  coord_flip() 
 ```
 
 ***
@@ -99,7 +103,7 @@ Before making this plot, I expected the energy levels of Death grips' music to b
 
 According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
 
-We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot. Funny enough, there is one dot at far left. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
+We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot. Even though my expectations were met, I am amazed by the extremely high energy levels. Funny enough, there is one dot at around 0.37. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
 
 Also, *No Love Deep Web* is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are **Death Grips**. They definitely did not held back on purpose.
 
@@ -115,16 +119,20 @@ corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 corpus_new <- corpus 
 ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
   geom_boxplot(fill = "#00A6C7") +
-  labs(x = "",
-    y = "valence" ,
-    title = "Valence per album" ,
-    subtitle = "",
-    caption = "Data source: Spotify API") +
   theme_minimal() +
   theme(
     title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25")) +
-    coord_flip()
+    plot.caption = element_text(color = "gray25"),
+    axis.line.y = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
+                                                       ends = "both")),
+        axis.title.y = element_text(angle = 0)) +
+  scale_y_continuous(name="Valence", limits=c(0, 1)) +
+  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
+    y = "Valence" ,
+    title = "Valence per album" ,
+    subtitle = "",
+    caption = "Data source: Spotify API") +
+  coord_flip() 
 ```
 
 
@@ -486,13 +494,12 @@ In between 25-30 seconds, we see the same type of novelties. This is due to the 
 
 ### Tempogram
 
-![Tempogram](/Users/isabel/Documenten/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png)
+![Tempogram](images/tempogram_ums.png)
 
 ***
 
 According to the Fourier-based tempogram of *Up My Sleeves*, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute.
 
-**How do I import an internal image of the tempogram?** I get a "No image path" error...
 
 ### Conclusion
 
