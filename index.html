@@ -2621,9 +2621,8 @@ color:black!important;
 <p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="576" data-figure-id=fig1 /></p>
 <hr />
 <p>Before making this plot, I expected the energy levels of Death grips’ music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible.</p>
-<p>According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis">Spotify API</a>, energy “represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips’ tracks.</p>
-<p>We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.</p>
-<p>Funny enough, there is one dot at far left. Apparently the song <em>Interview E</em> on <em>Interview 2016</em> is Death Grips’ least energetic song.</p>
+<p>According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis">Spotify API</a>, energy “is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips’ tracks.</p>
+<p>We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot. Funny enough, there is one dot at far left. Apparently the song <em>Interview E</em> on <em>Interview 2016</em> is Death Grips’ least energetic song.</p>
 <p>Also, <em>No Love Deep Web</em> is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are <strong>Death Grips</strong>. They definitely did not held back on purpose.</p>
 <p>Their music did not get less or more energetic over time. ???</p>
 <p>So, we can state that the remarkable high energy levels of Death Grips’ music is part of what makes it so aggressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to aggressiveness, so that’s what we’ll look at in the next part.</p>
@@ -2635,6 +2634,7 @@ color:black!important;
 </div>
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="576" data-figure-id=fig2 /></p>
 <hr />
+<p>According to the <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features">Spotify API</a>, valence is a “measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).”</p>
 <p>It becomes clear that <em>Interviews 2016</em> is Death Grips’ happiest album. It is an instrumental album, which would lead us to the conclusion that maybe MC Ride has a big role in making the music sad and/or angry. However, the other instrumental album <em>Fashion Week</em> has a much lower valence than <em>Interviews 2016</em>. It is maybe a bit misleading that there are three points not included in the box of <em>Fashion Week</em>, but the median valence of the album is still low.</p>
 <p><em>The Powers that B</em> is their least happy album. However, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that <em>The Powers That B</em> is Death Grips’ most aggressive album.</p>
 </div>
@@ -2713,13 +2713,24 @@ color:black!important;
 <hr />
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Fk81iRERCjpV5Ww9Wfb3g?utm_source=generator&amp;theme=0" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
 </iframe>
+<p>On the left we see a novelty function of loudness, of the song <em>Up My Sleeves</em>. A novelty (read: change) in the song, causes a peak. The higher the peak, the higher the change in, in this case, loudness.</p>
 <p>In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence “up my sleeves” is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-50 seconds look quite irregular, it is hard to find a tempo. <em>Up My Sleeves</em> is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-50 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.</p>
-<p>For similar reasons, the tempogram of <em>Up My Sleeves</em> is hard to read, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds).</p>
-<p><strong>How do I import an internal image of the tempogram?</strong></p>
+</div>
+<div id="tempogram" class="section level3">
+<h3>Tempogram</h3>
 <div class="figure">
-<img src="/Users/isabel/Documents/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png" alt="" />
+<img src="/Users/isabel/Documenten/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png" alt="" />
 <p class="caption">Tempogram</p>
 </div>
+<hr />
+<p>According to the Fourier-based tempogram of <em>Up My Sleeves</em>, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute.</p>
+<p><strong>How do I import an internal image of the tempogram?</strong> I get a “No image path” error…</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p><strong><em>What makes Death Grips experimental?</em></strong></p>
+<p>We’ve seen that <strong>Death Grips</strong>’ music is energetic and sad, which equals aggression. I am very convinced that this is part of what makes Death Grips experimental. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggression with their evolutionary blend of punk rock, hip-hop and industrial music.</p>
+<p>However, their experimentalness does not show in change or uniqueness within songs. We’ve seen that <em>Fuck Me Out</em> is quite similar to itself. Furthermore, <em>Up My Sleeves</em> did not contain huge novelties in loudness. Looks like there is still room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable ;)</p>
 </div>
 
 </div>

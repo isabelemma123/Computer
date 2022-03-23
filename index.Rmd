@@ -89,8 +89,7 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
   theme_minimal() +
   theme(
     title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25"),
-    axis.text.x = element_blank()) +
+    plot.caption = element_text(color = "gray25")) +
     coord_flip()
 ```
 
@@ -98,11 +97,9 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = energy)) +
 
 Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
 
-According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
+According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
 
-We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot.
-
-Funny enough, there is one dot at far left. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
+We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot. Funny enough, there is one dot at far left. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
 
 Also, *No Love Deep Web* is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are **Death Grips**. They definitely did not held back on purpose.
 
@@ -126,13 +123,14 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
   theme_minimal() +
   theme(
     title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25"),
-    axis.text.x = element_blank()) +
+    plot.caption = element_text(color = "gray25")) +
     coord_flip()
 ```
 
 
 ***
+
+According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features), valence is a "measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry)."
 
 It becomes clear that *Interviews 2016* is Death Grips' happiest album. It is an instrumental album, which would lead us to the conclusion that maybe MC Ride has a big role in making the music sad and/or angry. However, the other instrumental album *Fashion Week* has a much lower valence than *Interviews 2016*. It is maybe a bit misleading that there are three points not included in the box of *Fashion Week*, but the median valence of the album is still low.
 
@@ -461,10 +459,24 @@ ums1 %>%
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Fk81iRERCjpV5Ww9Wfb3g?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
+On the left we see a novelty function of loudness, of the song *Up My Sleeves*. A novelty (read: change) in the song, causes a peak. The higher the peak, the higher the change in, in this case, loudness.
+
 In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-50 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-50 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
-For similar reasons, the tempogram of *Up My Sleeves* is hard to read, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds).
+### Tempogram
 
-**How do I import an internal image of the tempogram?** I get: "No image path" error...
+![Tempogram](/Users/isabel/Documenten/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png)
 
-![Tempogram](/Users/isabel/Documents/Filosofie%20UvA/Jaar%202/Computational%20musicology/tempogram_ums.png)
+***
+
+According to the Fourier-based tempogram of *Up My Sleeves*, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute.
+
+**How do I import an internal image of the tempogram?** I get a "No image path" error...
+
+### Conclusion
+
+***What makes Death Grips experimental?***
+
+We've seen that **Death Grips**' music is energetic and sad, which equals aggression. I am very convinced that this is part of what makes Death Grips experimental. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggression with their evolutionary blend of punk rock, hip-hop and industrial music.
+
+However, their experimentalness does not show in change or uniqueness within songs. We've seen that *Fuck Me Out* is quite similar to itself. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. Looks like there is still room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable ;)
