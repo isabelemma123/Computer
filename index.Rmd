@@ -79,7 +79,7 @@ In summary, I will be analyzing what makes Death Grips experimental. My research
 
 ### Why Death Grips gives you adrenaline
 
-``` {r}
+``` {r dpi = 200}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus %>%
@@ -318,7 +318,7 @@ Remember, bright yellow means that it is **not** that chord. Consequently, the m
 
 ### Most experimental songs (ceptsrogram)
 
-``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
+``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 203}
 library(gridExtra)
 
 fmo <-
@@ -418,7 +418,7 @@ A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I
 
 ### Most experimental song (self-similarity matrice)
 
-``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
+``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 202}
 library(gridExtra)
 
 plot3 <- fmo %>%
@@ -472,7 +472,7 @@ Somehow I expected an experimental song to differ from itself at various moments
 
 ### Novelty function
 
-```{r}
+```{r dpi = 201}
 ums1 <-
   get_tidy_audio_analysis("0Fk81iRERCjpV5Ww9Wfb3g") %>%
   select(segments) %>%
@@ -484,7 +484,8 @@ ums2 <- ums1 %>%
   mutate(delta_loudness = loudness_max - lag(loudness_max)) %>%
   ggplot(aes(x = loudness_max_time, y = pmax(0, delta_loudness))) +
   geom_line() +
-  xlim(25, 50) +
+  xlim(25, 40) +
+  ylim(0,30) +
   theme_minimal() +
   labs(x = "Time (s)", y = "Novelty")
 
@@ -492,7 +493,8 @@ ums2 <- ums1 %>%
 photo <- knitr::include_graphics("images/tempogram_ums.png")
 photo_panel <- ggdraw() + draw_image(photo, scale = 1)
 
-plot_grid(ums2, photo_panel, ncol = 2)
+plot_grid(ums2, photo_panel, align = "h", axis = "b", nrow = 1, rel_widths = c(1, 2)
+)
 ```
 
 ***
@@ -501,7 +503,7 @@ plot_grid(ums2, photo_panel, ncol = 2)
 
 On the left we see a novelty function of loudness, of the song *Up My Sleeves*. A novelty (read: change) in the song, causes a peak. The higher the peak, the higher the change in, in this case, loudness.
 
-In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-50 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-50 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
+In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-40 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-40 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
 On the right we see a Fourier-based tempogram of *Up My Sleeves*. According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute. Furthermore, the main part of the song has a bpm mostly over 100: in between 100-160 beats per minute light up the most
 
