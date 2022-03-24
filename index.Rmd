@@ -43,6 +43,7 @@ library(tidymodels)
 library(heatmaply)
 library(ggdendro)
 library(purrr)
+library(cowplot)
 ```
 
 ### Meet Death Grips
@@ -82,7 +83,7 @@ In summary, I will be analyzing what makes Death Grips experimental. My research
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
 corpus_new <- corpus %>%
-  mutate(album = factor(track.album.name, levels=c("Year Of The Snitch", "Bottomless Pit", "Interview 2016", "Fashion Week", "The Powers That B", "Government Plates", "The Money Store", "No Love Deep Web")))
+  mutate(album = factor(track.album.name, levels=c("Year Of The Snitch", "Bottomless Pit", "Interview 2016", "Fashion Week", "The Powers That B", "Government Plates", "No Love Deep Web", "The Money Store")))
 ggplot(data = corpus_new, aes(x = album, y  = energy)) +
   geom_boxplot(fill = "#00A6C7") +
   theme_minimal() +
@@ -93,7 +94,7 @@ ggplot(data = corpus_new, aes(x = album, y  = energy)) +
                                                        ends = "both")),
         axis.title.y = element_text(angle = 0)) +
   scale_y_continuous(name="Energy", limits=c(0, 1)) +
-  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
+  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
     y = "energy" ,
     title = "Energy per album" ,
     subtitle = "",
@@ -109,9 +110,7 @@ According to the [Spotify API](https://developer.spotify.com/documentation/web-a
 
 We can see very clearly that every album has a very high mean of energy, since every box is on the far right of the plot. Even though my expectations were met, I am amazed by the extremely high energy levels. Funny enough, there is one dot at around 0.37. Apparently the song *Interview E* on *Interview 2016* is Death Grips' least energetic song. 
 
-Also, *No Love Deep Web* is quite an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. Wait a minute, they are **Death Grips**. They definitely did not held back on purpose.
-
-Their music did not get less or more energetic over time. ???
+Also, *No Love Deep Web* is a bit of an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. If that was the case, they definitely held back less from that album on: from *No Love Deep Web* their music got more energetic over time. 
 
 So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
 
@@ -120,8 +119,8 @@ So, we can state that the remarkable high energy levels of Death Grips' music is
 ``` {r}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
-corpus_new <- corpus 
-ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
+
+ggplot(data = corpus_new, aes(x = album, y  = valence)) +
   geom_boxplot(fill = "#00A6C7") +
   theme_minimal() +
   theme(
@@ -131,7 +130,7 @@ ggplot(data = corpus_new, aes(x = track.album.name, y  = valence)) +
                                                        ends = "both")),
         axis.title.y = element_text(angle = 0)) +
   scale_y_continuous(name="Valence", limits=c(0, 1)) +
-  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
+  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
     y = "Valence" ,
     title = "Valence per album" ,
     subtitle = "",
@@ -315,7 +314,7 @@ Luckily, I've included two instrumental albums in my corpus. MC Ride may fool th
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0AUtK92LWcv3wbpv6NkhKr?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 
-The sections with bright yellow contain a very sharp sound. Remember, bright yellow means that it is **not** that chord. Consequently, the most dark blue means it is definitely that chord.
+Remember, bright yellow means that it is **not** that chord. Consequently, the most dark blue means it is definitely that chord. The sections with bright yellow contain a very sharp sound. 
 
 ### Most experimental songs (ceptsrogram)
 
@@ -422,7 +421,7 @@ A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I
 ``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE}
 library(gridExtra)
 
-fmo %>%
+plot3 <- fmo %>%
   compmus_self_similarity(timbre, "cosine") %>% 
   ggplot(
     aes(
@@ -439,7 +438,7 @@ fmo %>%
   theme_classic() +
   labs(title = "Timbre of 'Fuck me out'", x = "Time (s)", y = "Time (s)")
 
-hh %>%
+plot4 <- hh %>%
   compmus_self_similarity(timbre, "cosine") %>% 
   ggplot(
     aes(
@@ -455,6 +454,8 @@ hh %>%
   scale_fill_viridis_c(guide = "none") +
   theme_classic() +
   labs(title = "Timbre of 'Hot Head'", x = "Time (s)", y = "Time (s)")
+
+grid.arrange(plot3, plot4, ncol=2)
 ```
 
 ***
@@ -477,7 +478,7 @@ ums1 <-
   select(segments) %>%
   unnest(segments)
 
-ums1 %>%
+ums2 <- ums1 %>%
   mutate(loudness_max_time = start + loudness_max_time) %>%
   arrange(loudness_max_time) %>%
   mutate(delta_loudness = loudness_max - lag(loudness_max)) %>%
@@ -486,6 +487,12 @@ ums1 %>%
   xlim(25, 50) +
   theme_minimal() +
   labs(x = "Time (s)", y = "Novelty")
+
+
+photo <- knitr::include_graphics("images/tempogram_ums.png")
+photo_panel <- ggdraw() + draw_image(photo, scale = 1)
+
+plot_grid(ums2, photo_panel, ncol = 2)
 ```
 
 ***
@@ -496,13 +503,7 @@ On the left we see a novelty function of loudness, of the song *Up My Sleeves*. 
 
 In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-50 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-50 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
-### Tempogram
-
-![Tempogram](images/tempogram_ums.png)
-
-***
-
-According to the Fourier-based tempogram of *Up My Sleeves*, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute.
+On the right we see a Fourier-based tempogram of *Up My Sleeves*. According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute. Furthermore, the main part of the song has a bpm mostly over 100: in between 100-160 beats per minute light up the most
 
 ### Clustering
 
