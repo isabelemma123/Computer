@@ -44,6 +44,9 @@ library(heatmaply)
 library(ggdendro)
 library(purrr)
 library(cowplot)
+library(dplyr)
+library(viridis)
+library(hrbrthemes)
 ```
 
 ### Meet Death Grips
@@ -116,36 +119,54 @@ So, we can state that the remarkable high energy levels of Death Grips' music is
 
 ### Why Death Grips does not make you much happier
 
-``` {r}
+```{r}
+# The dataset is provided in the gapminder library
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
 
+# Interactive version
+p <- corpus %>%
+  mutate(energy=round(energy,3)) %>%
+  mutate(instrumentalness=round(instrumentalness,7)) %>%
+  mutate(valence=round(valence,3)) %>%
+  
+  # Reorder countries to having big bubbles on top
+  arrange(desc(danceability)) %>%
+  mutate(track.name = factor(track.name, track.name)) %>%
+  
+  # prepare text for tooltip
+  mutate(text = paste("Track: ", track.name, "\nAlbum: ", track.album.name, "\nValence: ", valence, "\nEnergy: ", energy, "\nInstrumentalness: ", instrumentalness, "\nDanceability: ", danceability, sep="")) %>%
+  
+  # Classic ggplot
+  ggplot( aes(x=energy, y=valence, size = instrumentalness, color = as.factor(danceability), text=text)) +
+    geom_point(alpha=0.7) +
+    scale_size(range = c(3, 6), name="Instrumentalness") +
+    scale_color_viridis(discrete=TRUE, guide=FALSE) +
+    theme_ipsum() +
+    theme(legend.position="none")
 
-ggplot(data = corpus_new, aes(x = album, y  = valence)) +
-  geom_boxplot(fill = "#00A6C7") +
-  theme_minimal() +
-  theme(
-    title = element_text(color = "gray25"),
-    plot.caption = element_text(color = "gray25"),
-    axis.line.y = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
-                                                       ends = "both")),
-        axis.title.y = element_text(angle = 0)) +
-  scale_y_continuous(name="Valence", limits=c(0, 1)) +
-  labs(x = "Oldest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNewest",
-    y = "Valence" ,
-    title = "Valence per album" ,
-    subtitle = "",
-    caption = "Data source: Spotify API") +
-  coord_flip() 
+# turn ggplot interactive with plotly
+pp <- ggplotly(p, tooltip="text")
+pp
 ```
-
 
 ***
 
+Let us combine the information of the previous plot and add information of valence, instrumentalness and danceability.
+
+***Valence***
 According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features), valence is a "measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry)."
 
-It becomes clear that *Interviews 2016* is Death Grips' happiest album. It is an instrumental album, which would lead us to the conclusion that maybe MC Ride has a big role in making the music sad and/or angry. However, the other instrumental album *Fashion Week* has a much lower valence than *Interviews 2016*. It is maybe a bit misleading that there are three points not included in the box of *Fashion Week*, but the median valence of the album is still low.
+At first look, we can see that most of Death Grips' songs have high energy and low valence. This makes sense, since high energy plus low valence equals aggressiveness.
 
-*The Powers that B* is their least happy album. However, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most aggressive album.
+A lot of the songs on *Interviews 2016* end up in relatively high valence. It is an instrumental album, which would lead us to the conclusion that maybe MC Ride has a big role in making the music sad and/or angry. However, the other instrumental album *Fashion Week* has a much lower valence than *Interviews 2016*. 
+
+Most of the songs on *The Powers that B* have a low valence level. However, reflecting the information of the previous plot about energy, this album was also the most energetic one. Combining these plots about energy and valence makes me conclude that *The Powers That B* is Death Grips' most aggressive album.
+
+***Danceability***
+Blablabla
+
+***Instrumentalness***
+Blablabla
 
 ### Most popular song
 
