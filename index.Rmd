@@ -47,24 +47,23 @@ library(cowplot)
 library(dplyr)
 library(viridis)
 library(hrbrthemes)
+library(d3heatmap)
 ```
 
 ### Meet Death Grips
 
-**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Their music is extremely energetic and, if I might say so, quite aggressive. I have not always been able to put my finger on Death Grips’ music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the [Spotify's API](https://developer.spotify.com) would make out of Death Grips' music. The goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
+**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. They've also inspired great artists like *David Bowie* and *Kanye West* for the albums *Black Star* and *Yeezus*, respectively. Death Grips' music is extremely energetic and, if I might say so, quite aggressive. I am sometimes unable to put my finger on their music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the [Spotify's API](https://developer.spotify.com) would make out of Death Grips' music. Therefore, the goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
 
-*The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. With the release of *Exmilitary*, Death Grips introduced the world to a refreshing blend of punk rock, hip-hop and industrial music.
-
-In total, Death Grips released 8 albums. *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. For that same reason, I will unfortunately not be able to take *Exmilitary* into account in this research. This is a loss, since the release of *Exmilitary* introduced the world to Death Grips' refreshing blend of punk rock, hip-hop and industrial music. 
+In total, Death Grips released 8 albums. *The Money Store* (2012) is their most popular album. However, this is without taking their first album *Exmilitary* into account. Since it is not on Spotify, it's hard to compare its popularity. For that same reason, I will unfortunately not be able to take *Exmilitary* into account in this research. This is a loss, since the release of *Exmilitary* gave them public recognition for the first time and moreover introduced the world to Death Grips' refreshing blend of punk rock, hip-hop and industrial music. 
 
 Next to the seven remaining albums, I will include their EP *Death Grips*. This EP is also an instrumental one. Therefore, it will be valuable to expand my data. And just so it has been mentioned: one of these seven albums is actually a double album and another one is an intrumental album. With data attained by [Spotify's API](https://developer.spotify.com), I will be focussing on the following questions:
 
-- What makes Death Grips so experimental and inaccessible? 
+- What makes Death Grips experimental and inaccessible? 
 - How can we distinguish this ‘experimentalness’ with the data gained from [Spotify's API](https://developer.spotify.com)?
 - Is their most popular music their least experimental music?
 - Has Death Grips become more experimental over time?
 
-In summary, I will be analyzing what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
+In summary, I will be analyzing **what makes Death Grips experimental**. My research will be based on the data of 7 albums and 1 EP.
 
 ***
 
@@ -115,7 +114,7 @@ We can see very clearly that every album has a very high mean of energy, since e
 
 Also, *No Love Deep Web* is a bit of an outlier compared to the energy levels of the rest of the albums. The median energy of this album is the lowest of all. This is their second released album. Maybe they thought they needed to refrain themselves. If that was the case, they definitely held back less from that album on: from *No Love Deep Web* their music got more energetic over time. 
 
-So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This will help in researching whether their most popular music their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
+So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This consequently means that as to energy, their most popular music is not their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
 
 ### Why Death Grips does not make you much happier
 
@@ -151,7 +150,7 @@ pp
 
 ***
 
-Let us combine the information of the previous plot and add information of valence, instrumentalness and danceability. Teh graph on the left is interactive, so try it out!
+Let us combine the information of the previous plot and add information of valence, instrumentalness and danceability. The graph is interactive, so try it out!
 
 ***Valence***
 
@@ -176,6 +175,24 @@ An outlier for this correlation is the song *Runway E (2)*, with its high energy
 According to [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features), instrumentalness predicts "whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0".
 
 The size of the bubbles represent instrumentalness. The bigger the bubble, the less vocals. We can see that the bigger bubbles in this graph represent songs from mostly the instrumental albums *Interviews 2016* and *Fashion Week*, so that makes sense.
+
+### Feature changes through time
+
+```{r, dpi = 200}
+corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
+
+corpus_neww <- corpus %>% 
+    group_by(track.album.name) %>% 
+    summarise(energy=mean(energy), danceability=mean(danceability), instrumentalness=mean(instrumentalness), speechiness=mean(speechiness), acousticness=mean(acousticness), liveness=mean(liveness), valence=mean(valence)) %>%
+    mutate(album = factor(track.album.name, levels=c("Year Of The Snitch", "Bottomless Pit", "Interview 2016", "Fashion Week", "The Powers That B", "Government Plates", "No Love Deep Web", "The Money Store")))
+           
+row.names(corpus_neww) <- corpus_neww$track.album.name
+
+data = subset(corpus_neww, select = c(energy, valence, danceability, instrumentalness, speechiness, acousticness, liveness))
+
+heatmaply(data, Colv = NA, Rowv = NA, scale="column", color.palette=viridis)
+
+```
 
 ### Most popular song
 
@@ -213,9 +230,15 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 - After 10 seconds, MC Ride stops rapping and the melody changes. There is more happening in this new melody compared to the previous one.
 
-- In between and 22 seconds, the chromagram shows mostly a D key. After these 22 second, MC Ride starts rapping again over the same melody we heard in the previous section.
+- In between 15 and 22 seconds, the chromagram shows mostly a D key. After 22 seconds, MC Ride starts rapping again over the same melody we heard in the previous section.
 
 - At 36 seconds, the melody transposes. In this section we see A#/Bb, B and C light up more, instead of A and D. 
+
+- Sections 57-63 s, 101-107 s and 135-140 s look alike, since these are the sections in which we hear the (mostly vocal) chorus: "get get get get got got got got..." We see that the chorus is in A#/Bb.
+
+- In between 63-101 s and 107-135 s we hear the main melody and MC Ride rapping.
+
+- Right after the third chorus, which in 140- s, the chorus gets repeated but with an extra drum and a hi-hat added, which is why this section is in C and C#/Db instead of A#/Bb.
 
 ### Chordogram
 
@@ -438,7 +461,7 @@ On first glance, it is clear that there is much going on in c02. According to th
 
 - In section 0-40 seconds and section 60-90 seconds, coefficients 3 and 4 alternate. Explain...
 
-- Between 100 and 130 seconds, c02 is extra bright. In this section, a hihat plays loud and frequently. I think this hihat shows in c02, because it has a high pitch and loudness, which makes it bright.
+- Between 100 and 130 seconds, c02 is extra bright. In this section, a hi-hat plays loud and frequently. I think this hi-hat shows in c02, because it has a high pitch and loudness, which makes it bright.
 
 ***Hot Head***
 
@@ -494,7 +517,7 @@ grid.arrange(plot3, plot4, ncol=2)
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z79ArOZZjYYaq4CGbBxa1?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-Looks like the timbre of *Fuck me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hihat. This type of hihat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
+Looks like the timbre of *Fuck me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hi-hat. This type of hi-hat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
 
 *Hot Head* is even more extremely self-similar than *Fuck Me Out*. The ending is the most "unique" compared to the rest of the song, because we can hear just one note getting louder and higher. This sound is heard often throughout the rest of the song, but then it's probably overruled by other sounds we can hear. These other sounds are absent in the last few seconds of the song, which is why the API reads those last few seconds as less similar to the rest of the song.
 
@@ -533,7 +556,7 @@ plot_grid(ums2, photo_panel, align = "h", axis = "b", nrow = 1, rel_widths = c(1
 
 On the left we see a novelty function of loudness, of the song *Up My Sleeves*. A novelty (read: change) in the song, causes a peak. The higher the peak, the higher the change in, in this case, loudness.
 
-In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-40 seconds look quite irregular, it is hard to find a tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-40 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
+In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-40 seconds look quite irregular, the API has a hard time finding the tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-40 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
 On the right we see a Fourier-based tempogram of *Up My Sleeves*. According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute. Furthermore, the main part of the song has a bpm mostly over 100: in between 100-160 beats per minute light up the most
 
@@ -602,6 +625,6 @@ corpus_dist %>%
 
 ***What makes Death Grips experimental?***
 
-We've seen that **Death Grips**' music is energetic and sad, which equals aggression. I am very convinced that this is part of what makes Death Grips experimental. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggression with their evolutionary blend of punk rock, hip-hop and industrial music.
+We've seen that **Death Grips**' music is energetic and sad, which equals aggressiveness. I am very convinced that this is part of what makes Death Grips experimental. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggressiveness with their progressive blend of punk rock, hip-hop and industrial music.
 
-However, their experimentalness does not show in change or uniqueness within songs. We've seen that *Fuck Me Out* is quite similar to itself. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. Looks like there is still room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable ;)
+However, their experimentalness does not show in change (novelties) or uniqueness within the songs. We've seen that *Fuck Me Out* and *Hot Head* are very similar to themselves. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. I suppose that this leaves room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable ;)
