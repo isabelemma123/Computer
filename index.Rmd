@@ -61,9 +61,8 @@ Next to the seven remaining albums, I will include their EP *Death Grips*. This 
 - What makes Death Grips experimental and inaccessible? 
 - How can we distinguish this ‘experimentalness’ with the data gained from [Spotify's API](https://developer.spotify.com)?
 - Is their most popular music their least experimental music?
-- Has Death Grips become more experimental over time?
 
-In summary, I will be analyzing **what makes Death Grips experimental**. My research will be based on the data of 7 albums and 1 EP.
+In summary, I will be analyzing **what makes Death Grips experimental**. My research will be based on the data of 7 albums and 1 EP. Let's reduce Death Grips to numbers!
 
 ***
 
@@ -106,7 +105,7 @@ ggplot(data = corpus_new, aes(x = album, y  = energy)) +
 
 ***
 
-Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
+Let us start with a barplot with the mean energy per album. Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
 
 According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
 
@@ -176,24 +175,6 @@ According to [Spotify API](https://developer.spotify.com/documentation/web-api/r
 
 The size of the bubbles represent instrumentalness. The bigger the bubble, the less vocals. We can see that the bigger bubbles in this graph represent songs from mostly the instrumental albums *Interviews 2016* and *Fashion Week*, so that makes sense.
 
-### Feature changes through time
-
-```{r, dpi = 200}
-corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
-
-corpus_neww <- corpus %>% 
-    group_by(track.album.name) %>% 
-    summarise(energy=mean(energy), danceability=mean(danceability), instrumentalness=mean(instrumentalness), speechiness=mean(speechiness), acousticness=mean(acousticness), liveness=mean(liveness), valence=mean(valence)) %>%
-    mutate(album = factor(track.album.name, levels=c("Year Of The Snitch", "Bottomless Pit", "Interview 2016", "Fashion Week", "The Powers That B", "Government Plates", "No Love Deep Web", "The Money Store")))
-           
-row.names(corpus_neww) <- corpus_neww$track.album.name
-
-data = subset(corpus_neww, select = c(energy, valence, danceability, instrumentalness, speechiness, acousticness, liveness))
-
-heatmaply(data, Colv = NA, Rowv = NA, scale="column", color.palette=viridis)
-
-```
-
 ### Most popular song
 
 ```{r compus chromagram}
@@ -238,7 +219,7 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 - In between 63-101 s and 107-135 s we hear the main melody and MC Ride rapping.
 
-- Right after the third chorus, which in 140- s, the chorus gets repeated but with an extra drum and a hi-hat added, which is why this section is in C and C#/Db instead of A#/Bb.
+- Right after the third chorus, which is 135-140 s, the chorus gets repeated but with an extra drum and a hi-hat added, which is why this section (140-146 s) transposes to C and C#/Db instead of A#/Bb.
 
 ### Chordogram
 
@@ -517,11 +498,11 @@ grid.arrange(plot3, plot4, ncol=2)
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z79ArOZZjYYaq4CGbBxa1?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-Looks like the timbre of *Fuck me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hi-hat. This type of hi-hat can only be heard in this section of the song, which causes it to be less similar to the rest of the song.
+Looks like the timbre of *Fuck Me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hi-hat. This type of hi-hat can only be heard in this section of the song, which causes it to be less similar to the rest of the song. Repetitions typically yield path-like structures. In this cepstrogram there are almost no paths/stripes to be found, except the diagonal line in the middle. This means that *Fuck Me Out* apparently contains few repetitions, which I do not think is true. The melody may be chaotic, but it definitely repeats itself. The chorus is in between 71-82 s and 145-155 s. Section 71-82 s, the first chorus, causes a cross, in other words, a distinction between dark blue sections 30-70 s and 83-144 s. These sections are homogeneous regions, since they yield block-like structures.
 
-*Hot Head* is even more extremely self-similar than *Fuck Me Out*. The ending is the most "unique" compared to the rest of the song, because we can hear just one note getting louder and higher. This sound is heard often throughout the rest of the song, but then it's probably overruled by other sounds we can hear. These other sounds are absent in the last few seconds of the song, which is why the API reads those last few seconds as less similar to the rest of the song.
+*Hot Head* is even more extremely self-similar than *Fuck Me Out*. Comparing the two cepstrograms, the one of *Hot Head* contains clearer path-like structures and block-like structures. For example, we can see three diagonal lines. As mentioned before, this suggests that those sections contain repetitions. The ending is the most "unique" compared to the rest of the song, because we can hear just one note getting louder and higher. This sound is heard often throughout the rest of the song, but then it's probably overruled by other sounds we can hear. These other sounds are absent in the last few seconds of the song, which is why the API reads those last few seconds as less similar to the rest of the song. The cepstrogram implies the musical structure A-B1-C-D-B2-C (intro/verse/chorus/bridge/verse/chorus).
 
-Somehow I expected an experimental song to differ from itself at various moments. However, after seeing these self-similarity matrices, it makes sense. I think the songs are still very experimental, just the same experimentalness throughout the song. There is so much happening in the songs, that the fact that the same thing is happening throughout the song does not make the songs less experimental: you still won't get used to the chaotic sounds.
+Somehow I expected an experimental song to differ from itself at many moments. However, after seeing these self-similarity matrices, it makes sense. I think the songs are still very experimental, just the same experimentalness throughout the song. There is so much happening in the songs, that the fact that the same thing is happening throughout the song does not make the songs less experimental: you still won't get used to the chaotic sounds.
 
 ### Novelty function
 
@@ -558,11 +539,11 @@ On the left we see a novelty function of loudness, of the song *Up My Sleeves*. 
 
 In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-40 seconds look quite irregular, the API has a hard time finding the tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-40 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
-On the right we see a Fourier-based tempogram of *Up My Sleeves*. According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute. Furthermore, the main part of the song has a bpm mostly over 100: in between 100-160 beats per minute light up the most
+On the right we see a Fourier-based tempogram of *Up My Sleeves*. "A tempogram indicates for each time instance the local relevance of a specific tempo for a given music recording" ([Muller, 2015](https://link.springer.com/book/10.1007/978-3-319-21945-5)). According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute (BPM). Furthermore, the main part of the song has a bpm mostly over 100: the section in between 100-160 bpm 'lights up' the most.
 
 ### Clustering
 
-``` {r}
+``` {r dpi = 205}
 corpus_cluster <-
   get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW") %>%
   add_audio_analysis() %>%
@@ -614,7 +595,7 @@ corpus_dist <- dist(corpus_juice, method = "euclidean")
 corpus_dist %>% 
   hclust(method = "complete") %>% 
   dendro_data() %>%
-  ggdendrogram()
+  ggdendrogram(hang = -1, cex = 0.6)
 ```
 
 ***
