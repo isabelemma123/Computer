@@ -105,7 +105,7 @@ ggplot(data = corpus_new, aes(x = album, y  = energy)) +
 
 ***
 
-Let us start with a barplot with the mean energy per album. Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. Maybe this is what makes the music experimental and inaccessible. 
+Let us start with a barplot with the mean energy per album. Before making this plot, I expected the energy levels of Death grips' music to be high. I think their music is very energetic, sometimes even too energetic for me. I expect that this is part of what makes the music experimental and inaccessible. 
 
 According to the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis), energy "is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy”. I would agree that these three characteristics apply to Death Grips' tracks.
 
@@ -140,7 +140,8 @@ p <- corpus %>%
     scale_size(range = c(3, 6), name="Instrumentalness") +
     scale_color_viridis(discrete=TRUE, guide=FALSE) +
     theme_ipsum() +
-    theme(legend.position="none")
+    theme(legend.position="none") +
+    labs(title = "Track's audio features")
 
 # turn ggplot interactive with plotly
 pp <- ggplotly(p, tooltip="text")
@@ -149,7 +150,7 @@ pp
 
 ***
 
-Let us combine the information of the previous plot and add information of valence, instrumentalness and danceability. The graph is interactive, so try it out!
+Let us combine the information of the previous plot and add data about valence, instrumentalness and danceability. The graph is interactive, so try it out!
 
 ***Valence***
 
@@ -173,7 +174,7 @@ An outlier for this correlation is the song *Runway E (2)*, with its high energy
 
 According to [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features), instrumentalness predicts "whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0".
 
-The size of the bubbles represent instrumentalness. The bigger the bubble, the less vocals. We can see that the bigger bubbles in this graph represent songs from mostly the instrumental albums *Interviews 2016* and *Fashion Week*, so that makes sense.
+The size of the bubbles represent instrumentalness. The bigger the bubble, the less vocals. We can see that most of the bigger bubbles in this graph represent songs from the instrumental albums *Interviews 2016* and *Fashion Week*, so that makes sense.
 
 ### Most popular song
 
@@ -196,9 +197,9 @@ getgot %>%
     )
   ) +
   geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude", title = "Chromagram of Get Got") +
   theme_minimal() +
-  scale_fill_viridis_c()
+  scale_fill_viridis_c() 
 ```
 
 ***
@@ -335,7 +336,7 @@ runwayH %>%
   geom_tile() +
   scale_fill_viridis_c(guide = "none") +
   theme_minimal() +
-  labs(x = "Time (s)", y = "")
+  labs(x = "Time (s)", y = "", title = "Chordogram of Runway H")
 
 ```
 
