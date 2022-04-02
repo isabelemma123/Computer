@@ -69,7 +69,7 @@ With data attained by [Spotify's API](https://developer.spotify.com), I will be 
 - What makes Death Grips experimental and inaccessible? 
 - How can we distinguish this ‘experimentalness’ with the data gained from [Spotify's API](https://developer.spotify.com)?
 
-I will answer these question using multiple methods, repsectively:
+I will answer these question using multiple methods, respectively:
 
 - Track-level features (energy, valence, danceability, instrumentalness)
 - Chroma features (pitch)
@@ -381,7 +381,7 @@ At first sight, we see that nearly every chord is a seventh chord. “A seventh 
 
 - 151-163 s is the bridge, which is mostly in chord A7 and D7.
 
-### Most experimental songs: **timbre cepstrogram** {data-commentary-width="400"}
+### Most experimental songs: **timbre cepstrogram** {data-commentary-width="500"}
 
 ``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 203}
 library(gridExtra)
@@ -529,9 +529,15 @@ grid.arrange(plot3, plot4, ncol=2)
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Z79ArOZZjYYaq4CGbBxa1?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
+***Fuck me out***
+
 Looks like the timbre of *Fuck Me Out* is quite similar to itself. Notice how the section between 110 - 130 seconds lights up yellow/green. This means that this section has less similarity to the rest of the song. We've also seen the same section light up in the previous cepstrogram. I stated that this section has a very loud and frequently played hi-hat. This type of hi-hat can only be heard in this section of the song, which causes it to be less similar to the rest of the song. Repetitions typically yield path-like structures. In this cepstrogram there are almost no paths/stripes to be found, except the diagonal line in the middle. This means that *Fuck Me Out* apparently contains few repetitions, which I do not think is true. The melody may be chaotic, but it definitely repeats itself. The chorus is in between 71-82 s and 145-155 s. Section 71-82 s, the first chorus, causes a cross, in other words, a distinction between dark blue sections 30-70 s and 83-144 s. These sections are homogeneous regions, since they yield block-like structures.
 
+***Hot Head***
+
 *Hot Head* is even more extremely self-similar than *Fuck Me Out*. Comparing the two cepstrograms, the one of *Hot Head* contains clearer path-like structures and block-like structures. For example, we can see three diagonal lines. As mentioned before, this suggests that those sections contain repetitions. The ending is the most "unique" compared to the rest of the song, because we can hear just one note getting louder and higher. This sound is heard often throughout the rest of the song, but then it's probably overruled by other sounds we can hear. These other sounds are absent in the last few seconds of the song, which is why the API reads those last few seconds as less similar to the rest of the song. The cepstrogram implies the musical structure A-B1-C-D-B2-C (intro/verse/chorus/bridge/verse/chorus).
+
+***Experimental?***
 
 Somehow I expected an experimental song to differ from itself at many moments. However, after seeing these self-similarity matrices, it makes sense. I think the songs are still very experimental, just the same experimentalness throughout the song. There is so much happening in the songs, that the fact that the same thing is happening throughout the song does not make the songs less experimental: you still won't get used to the chaotic sounds.
 
