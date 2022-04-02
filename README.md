@@ -9,4 +9,4 @@
 - Is their most popular music their least experimental music?
 - How did Death Grips' music change over time? Has Death Grips become more experimental over time?
 
-In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.
+In summary, I will be analyzing i) how Death Grips changed over time and ii) what makes Death Grips experimental. My research will be based on the data of 7 albums and 1 EP.A line I wrote on my local computer  
