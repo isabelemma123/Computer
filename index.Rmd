@@ -78,7 +78,7 @@ I will answer these question using multiple methods, respectively:
 - Temporal features (duration)
 - Clustering
 
-***Hypotheses***
+***Hypothesis***
 
 I expect Death Grips’ music to score high on aggressiveness and that the score is that high that it is part of what makes Death Grips experimental. For this reason I will start with researching valence and energy levels, which I will elaborate on. Furthermore, I am very interested if there will be an analysis showing that Death Grips is not experimental.
 
@@ -362,9 +362,9 @@ runwayH %>%
 
 ***
 
-I found out albums where MC Ride is rapping, do not work well in chordograms. Those chordograms show up almost completely dark blue. I think this is caused by the rapid- and choaticness of the music combined by the fact that MC Ride’s voice adds 
+I found out albums where MC Ride is rapping, do not work well in chordograms. Those chordograms show up almost completely dark blue. I think this is caused by the fact that songs with MC Ride are even more rapid and choatic than the instrumentals. Moreover, the instrumental songs show a clearer melody, because they do not contain vocals and lyrics that influence the chordogram.
 
-Luckily, I've included two instrumental albums in my corpus. MC Ride may fool the chordograms, but Zach and Andy provide us more clear ones. After a long search, I finally found a song that shows a clear melody: *Runway H*. It is a song with a loud bass, slow drums and loud synths
+Luckily, I've included two instrumental albums in my corpus. MC Ride may fool the chordograms, but Zach and Andy provide us more clear ones. After a long search, I finally found a song that shows a clear melody: *Runway H*. It is a song with a loud bass, slow drums and loud synths.
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0AUtK92LWcv3wbpv6NkhKr?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
