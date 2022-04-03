@@ -54,7 +54,7 @@ library(d3heatmap)
 
 ***Introduction***
 
-**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. They've also inspired great artists like *David Bowie* and *Kanye West* for the albums *Black Star* and *Yeezus*, respectively. Death Grips' music is extremely energetic and, if I might say so, quite aggressive. I am sometimes unable to put my finger on their music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the [Spotify's API](https://developer.spotify.com) would make out of Death Grips' music. Therefore, the goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
+**Death Grips** is an experimental hiphop band with three members: *Andy Morin*, *Zach Hill* and *MC Ride*. They've inspired great artists like *David Bowie* and *Kanye West* for the albums *Black Star* and *Yeezus*, respectively. When I got introduced to their music, I hated it. However, after torturing myself for quite some time, it grew on me. Death Grips' music is extremely energetic and, if I might say so, quite aggressive. Sometimes, I can't put my finger on their music. In most of their songs, there is so much happening at the same time: when I think I have found the rhythm, it changes again. Therefore, I am very curious what the [Spotify's API](https://developer.spotify.com) would make out of Death Grips' music. Therefore, the goal of this research is to analyze their music and by that, find out what makes Death Grips experimental.
 
 ***Data***
 
@@ -98,7 +98,7 @@ In summary, I will be analyzing **what makes Death Grips experimental**. My rese
       }
 </style>
 
-### Why Death Grips gives you adrenaline: **energy** {data-commentary-width="500"}
+### Death Grips gives you adrenaline: **energy** {data-commentary-width="500"}
 
 ``` {r dpi = 200}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
@@ -135,7 +135,7 @@ Also, *No Love Deep Web* is a bit of an outlier compared to the energy levels of
 
 So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This consequently means that as to energy, their most popular music is not their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
 
-### Why Death Grips does not make you much happier: **valence**, danceability and instrumentalness {data-commentary-width="500"}
+### Death Grips does not make you much happier: **valence**, **danceability** and **instrumentalness** {data-commentary-width="500"}
 
 ```{r}
 # The dataset is provided in the gapminder library
@@ -170,7 +170,7 @@ pp
 
 ***
 
-Let us combine the information of the previous plot and add data about valence, instrumentalness and danceability. The graph is interactive, so try it out!
+This graph combines the information of the previous plot with data about valence, instrumentalness and danceability. The graph is interactive!
 
 ***Valence***
 
@@ -362,9 +362,9 @@ runwayH %>%
 
 ***
 
-I found out albums where MC Ride is rapping, do not work well in chordograms. Those chordograms show up almost completely dark blue. I think this is caused by the fact that songs with MC Ride are even more rapid and choatic than the instrumentals. Moreover, the instrumental songs show a clearer melody, because they do not contain vocals and lyrics that influence the chordogram.
+I found out albums where MC Ride is rapping, do not work well in chordograms. Those chordograms show up almost completely dark blue. I think this is caused by the fact that songs with MC Ride are even more rapid and choatic than the instrumentals. Moreover, the instrumental songs show a clearer melody, because they lack vocals and lyrics that influence the chordogram.
 
-Luckily, I've included two instrumental albums in my corpus. MC Ride may fool the chordograms, but Zach and Andy provide us more clear ones. After a long search, I finally found a song that shows a clear melody: *Runway H*. It is a song with a loud bass, slow drums and loud synths.
+Luckily, I've included instrumental songs in my corpus. MC Ride may fool the chordograms, but Zach and Andy provide us more clear ones. After a long search, I finally found a song that shows a clear melody: *Runway H*. It is a song with a loud bass, slow drums and loud synths.
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0AUtK92LWcv3wbpv6NkhKr?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
@@ -481,7 +481,7 @@ First, notice the similarities of the two cepstrograms. This suggests that both 
 
 A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I think it's because the song is simply longer than *Fuck Me Out*, almost a full minute. Therefore, there is more information in the same plot size, which makes it more detailed.
 
-### Most experimental songs: **timbre and self-similarity** {data-commentary-width="500"}
+### Most experimental songs: **timbre** and **self-similarity** {data-commentary-width="500"}
 
 ``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 202}
 library(gridExtra)
