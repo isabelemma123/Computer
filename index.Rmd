@@ -49,9 +49,16 @@ library(viridis)
 library(hrbrthemes)
 library(d3heatmap)
 library(dendextend)
+library(shiny)
+library(fontawesome)
 ```
 
-### Introduction: **Meet Death Grips**
+``` {r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+fa(name = "music", fill = "black")
+```
+
+### `r fa(name = "music") ` Introduction: **Meet Death Grips** 
 
 ***Introduction***
 
@@ -99,7 +106,7 @@ In summary, I will be analyzing **what makes Death Grips experimental**. My rese
       }
 </style>
 
-### Death Grips gives you adrenaline: **energy** {data-commentary-width="500"}
+### `r fa(name = "music") ` Death Grips gives you adrenaline: **energy** {data-commentary-width="500"} 
 
 ``` {r dpi = 200}
 corpus <- get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW")
@@ -136,7 +143,7 @@ Also, *No Love Deep Web* is a bit of an outlier compared to the energy levels of
 
 So, we can state that the remarkable high energy levels of Death Grips' music is part of what makes it so aggressive and therefore experimental. This consequently means that as to energy, their most popular music is not their least experimental music. I would expect that valence also contributes to aggressiveness, so that's what we'll look at in the next part.
 
-### Death Grips does not make you much happier: **valence**, **danceability** and **instrumentalness** {data-commentary-width="500"}
+### `r fa(name = "music") ` Death Grips does not make you much happier: **valence**, **danceability** and **instrumentalness** {data-commentary-width="500"} 
 
 ```{r}
 # The dataset is provided in the gapminder library
@@ -197,7 +204,7 @@ According to [Spotify API](https://developer.spotify.com/documentation/web-api/r
 
 The size of the bubbles represent instrumentalness. The bigger the bubble, the less vocals. We can see that most of the bigger bubbles in this graph represent songs from the instrumental albums *Interviews 2016* and *Fashion Week*, so that makes sense.
 
-### Death Grips’ most popular song: **chroma** {data-commentary-width="500"}
+### `r fa(name = "music") ` Death Grips’ most popular song: **chroma** {data-commentary-width="500"} 
 
 ```{r compus chromagram}
 remotes::install_github('jaburgoyne/compmus')
@@ -243,7 +250,7 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 - Right after the third chorus, which is 135-140 s, the chorus gets repeated but with an extra drum and a hi-hat added, which is why this section (140-146 s) transposes to C and C#/Db instead of A#/Bb.
 
-### Death Grips’ instrumentals: **chordogram** {data-commentary-width="500"}
+### `r fa(name = "music") ` Death Grips’ instrumentals: **chordogram** {data-commentary-width="500"} 
 
 ``` {r dpi = 209}
 circshift <- function(v, n) {
@@ -382,7 +389,7 @@ At first sight, we see that nearly every chord is a seventh chord. “A seventh 
 
 - 151-163 s is the bridge, which is mostly in chord A7 and D7.
 
-### Most experimental songs: **timbre cepstrogram** {data-commentary-width="500"}
+### `r fa(name = "music") ` Most experimental songs: **timbre cepstrogram** {data-commentary-width="500"}  
 
 ``` {r, figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 203}
 library(gridExtra)
@@ -482,7 +489,7 @@ First, notice the similarities of the two cepstrograms. This suggests that both 
 
 A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I think it's because the song is simply longer than *Fuck Me Out*, almost a full minute. Therefore, there is more information in the same plot size, which makes it more detailed.
 
-### Most experimental songs: **timbre** and **self-similarity** {data-commentary-width="500"}
+### `r fa(name = "music") ` Most experimental songs: **timbre** and **self-similarity** {data-commentary-width="500"}
 
 ``` {r, second figures-side, fig.show="hold", fig.align = "center", echo = FALSE, dpi = 202}
 library(gridExtra)
@@ -542,7 +549,7 @@ Looks like the timbre of *Fuck Me Out* is quite similar to itself. Notice how th
 
 Somehow I expected an experimental song to differ from itself at many moments. However, after seeing these self-similarity matrices, it makes sense. I think the songs are still very experimental, just the same experimentalness throughout the song. There is so much happening in the songs, that the fact that the same thing is happening throughout the song does not make the songs less experimental: you still won't get used to the chaotic sounds.
 
-### Low **novelty** in **loudness** and high **tempo** {data-commentary-width="500"}
+### `r fa(name = "music") ` Low **novelty** in **loudness** and high **tempo** {data-commentary-width="500"} 
 
 ```{r dpi = 201}
 ums1 <-
@@ -578,7 +585,7 @@ In between 25-30 seconds, we see the same type of novelties. This is due to the 
 
 On the right we see a Fourier-based tempogram of *Up My Sleeves*. "A tempogram indicates for each time instance the local relevance of a specific tempo for a given music recording" ([Muller, 2015](https://link.springer.com/book/10.1007/978-3-319-21945-5)). According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute (BPM). Furthermore, the main part of the song has a bpm mostly over 100: the section in between 100-160 bpm 'lights up' the most. This is quite a high bpm, which adds to the aggressiveness of Death Grips' music. 
 
-### **Clustering** the most popular album {data-commentary-width="500"}
+### `r fa(name = "music") ` **Clustering** the most popular album {data-commentary-width="500"} 
 
 
 ``` {r dpi = 208}
@@ -646,7 +653,7 @@ plot(corpus_disttt, hang = -1, cex = 0.6, horiz=TRUE, main = "Cluster dendrogram
 
 ![Album cover of The Money Store](images/artrockstore.jpeg)
 
-### Conclusion
+### `r fa(name = "music") ` Conclusion 
 
 ***Conclusion: What makes Death Grips experimental?***
 
