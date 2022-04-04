@@ -245,7 +245,7 @@ Death Grips' most popular song is *Get Got*. It's a very energetic and catchy so
 
 ### Death Grips’ instrumentals: **chordogram** {data-commentary-width="500"}
 
-``` {r}
+``` {r dpi = 209}
 circshift <- function(v, n) {
   if (n == 0) v else c(tail(v, n), head(v, -n))
 }
@@ -561,7 +561,6 @@ ums2 <- ums1 %>%
   theme_minimal() +
   labs(x = "Time (s)", y = "Novelty")
 
-
 photo <- knitr::include_graphics("images/tempogram_ums.png")
 photo_panel <- ggdraw() + draw_image(photo, scale = 1)
 
@@ -643,10 +642,9 @@ plot(corpus_disttt, hang = -1, cex = 0.6, horiz=TRUE, main = "Cluster dendrogram
 
 ***
 
-The Money Store is (again, without taking Exmilitary into account) Death Grips' most popular album.
+*The Money Store* is (again, without taking Exmilitary into account) Death Grips' most popular album. Hacker is the first song to seperate from the other songs on the album. System Blower, Blackjack and Double Helix form one cluster. 
 
-However, I think Death Grips’ music does not have a very big range of types of music. They may be experimental and evolutionary compared to other music, but within their corpus, it is not very diverse. 
-
+![Album cover of The Money Store](images/artrockstore.jpeg)
 
 ### Conclusion
 
@@ -662,6 +660,6 @@ I have included two more playlists. The first one contains Death Grips' singles 
 
 ***
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5iOMxKZSZTIMOwgiBuT9es?utm_source=generator&theme=0" width="100%" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5iOMxKZSZTIMOwgiBuT9es?utm_source=generator&theme=0" width="100%" height="280" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2sJkY31Wnr4WJJx3WK97sa?utm_source=generator&theme=0" width="100%" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2sJkY31Wnr4WJJx3WK97sa?utm_source=generator&theme=0" width="100%" height="280" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
