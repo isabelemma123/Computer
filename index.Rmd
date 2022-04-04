@@ -48,6 +48,7 @@ library(dplyr)
 library(viridis)
 library(hrbrthemes)
 library(d3heatmap)
+library(dendextend)
 ```
 
 ### Introduction: **Meet Death Grips**
@@ -576,13 +577,14 @@ On the left we see a novelty function of loudness, of the song *Up My Sleeves*. 
 
 In between 25-30 seconds, we see the same type of novelties. This is due to the fact that the sentence "up my sleeves" is being repeated. At 30 seconds, the vocals stop and the melody of the song starts. The novelties in between 30-40 seconds look quite irregular, the API has a hard time finding the tempo. *Up My Sleeves* is, once again, an energetic song with almost no silences in the main melody. There is almost no silence in between 35-40 seconds, nor in the melody. When there is music followed by silence (or the other way around), the change in loudness is high. Therefore, you would expect a high novelty when the music stops and also when it starts again. But since there are almost no silences in the melody, my expectations that the novelties in the main part of the song would not be high, were right.
 
-On the right we see a Fourier-based tempogram of *Up My Sleeves*. "A tempogram indicates for each time instance the local relevance of a specific tempo for a given music recording" ([Muller, 2015](https://link.springer.com/book/10.1007/978-3-319-21945-5)). According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute (BPM). Furthermore, the main part of the song has a bpm mostly over 100: the section in between 100-160 bpm 'lights up' the most.
+On the right we see a Fourier-based tempogram of *Up My Sleeves*. "A tempogram indicates for each time instance the local relevance of a specific tempo for a given music recording" ([Muller, 2015](https://link.springer.com/book/10.1007/978-3-319-21945-5)). According to the tempogram, the tempo of the song changes very often, except for the parts where the main melody is missing (0-30 seconds and 266-292 seconds). In those parts, the tempo is probably 145 beats per minute (BPM). Furthermore, the main part of the song has a bpm mostly over 100: the section in between 100-160 bpm 'lights up' the most. This is quite a high bpm, which adds to the aggressiveness of Death Grips' music. 
 
-### Clustering {data-commentary-width="500"}
+### **Clustering** the most popular album {data-commentary-width="500"}
 
-``` {r dpi = 205}
+
+``` {r dpi = 208}
 corpus_cluster <-
-  get_playlist_audio_features("", "6BoVVeeH3vmrHlgivNbefW") %>%
+  get_playlist_audio_features("", "6YoeLWk2lIWN1GM4WWVW7H") %>%
   add_audio_analysis() %>%
   mutate(
     segments = map2(segments, key, compmus_c_transpose),
@@ -629,24 +631,37 @@ corpus_juice <-
   column_to_rownames("track.name")
 
 corpus_dist <- dist(corpus_juice, method = "euclidean")
-corpus_dist %>% 
-  hclust(method = "complete") %>% 
-  dendro_data() %>%
-  ggdendrogram(hang = -1, cex = 0.6)
+
+my_colors <- ifelse(mtcars$am==0, "forestgreen", "green")
+corpus_distt <- corpus_dist %>% 
+  hclust(method = "complete") %>%
+  as.dendrogram(corpus_dist) 
+corpus_disttt <- color_branches(corpus_distt, k = 4)
+par(mar = c(5.1, 4.1, 4.1, 9))
+plot(corpus_disttt, hang = -1, cex = 0.6, horiz=TRUE, main = "Cluster dendrogram of The Money Store", xlab = "Height")
 ```
 
 ***
 
-It depends on the interpretation of “experimental”, but I think it is part of being experimental if a band continuously tries to reinvent themself. If this is the case, I would expect the corpus to be harder to cluster, since the songs differ from the others.
+The Money Store is (again, without taking Exmilitary into account) Death Grips' most popular album.
 
 However, I think Death Grips’ music does not have a very big range of types of music. They may be experimental and evolutionary compared to other music, but within their corpus, it is not very diverse. 
 
+
 ### Conclusion
 
-***What makes Death Grips experimental?***
+***Conclusion: What makes Death Grips experimental?***
 
-We've seen that **Death Grips’** music is energetic and sad, which equals aggressiveness. I am very convinced that this is part of what makes Death Grips experimental, since the valence levels were remarkably low and energy levels remarkably high. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggressiveness with their progressive blend of punk rock, hip-hop and industrial music.
+We've seen that **Death Grips’** music is very energetic and sad. In the tempogram, it became clear that Death Grips' music has a relatively high bpm (in between 100-160 bpm). So, the valence levels were remarkably low and the energy levels and bpm remarkably high. This corresponds with my expectations about Death Grips' being' music being very aggressive. I am very convinced that this is part of what makes Death Grips experimental: the aggressiveness. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggressiveness with their progressive blend of punk rock, hip-hop and industrial music.
 
 However, their experimentalness did not show in change (novelties) or uniqueness within the songs. We've seen that the experimental songs *Fuck Me Out* and *Hot Head* are very similar to themselves. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. I concluded that the songs are still experimental, just the same experimentalness throughout the songs. I suggest that this leaves room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable (if they plan on making more music).
 
-What have you learned from this set of analyses? Who could these conclusions benefit, and how?
+***Future research***
+
+I have included two more playlists. The first one contains Death Grips' singles that weren't included in this research, for the interested. The second one is for the reader who is not convinced by Death Grips and would like something a bit more accessible: it contains three albums from The I.L.Y's. The I.L.Y's is a side project by Death Grips members Zach Hill and Andy Morin. You could expect their music to sound like Death Grips' instrumentals. However, I think The I.L.Y's' music is very different from those instrumentals, mostly because it is more rock, less hip hop and contains different vocals (not MC Ride's vocals). Give it a listen! For future research I would be interested in comparing Death Grips' with The I.L.Y's and also with Zach Hill's solo work. I would expect that the music of The I.L.Y's to have higher valence, lower energy (so: less aggressiveness), lower tempo and lower speechiness.
+
+***
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5iOMxKZSZTIMOwgiBuT9es?utm_source=generator&theme=0" width="100%" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2sJkY31Wnr4WJJx3WK97sa?utm_source=generator&theme=0" width="100%" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
