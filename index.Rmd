@@ -485,7 +485,7 @@ On first glance, it is clear that there is much going on in c02. According to th
 
 ***Hot Head***
 
-First, notice the similarities of the two cepstrograms. This suggests that both *Fuck Me Out* and *Hot Head* are songs with a lot of brightness. However, *Hot Head*'s cepstrogram does differ from the one of *Fuck Me Out*: it bleeds out more to c01 & c03, and c06 lights up significantly more. 
+First, notice the similarities of the two cepstrograms. This suggests that both *Fuck Me Out* and *Hot Head* are songs with a lot of brightness. However, *Hot Head's* cepstrogram does differ from the one of *Fuck Me Out*: it bleeds out more to c01 & c03, and c06 lights up significantly more. I can imagine songs with a lot of brightness to be scratching the listeners ears. This is why I think, that at least for these two songs, the brightness contributes to the experimentalness.
 
 A relevant sidenote is that *Hot Head*'s cepstrogram looks more detailed. Why? I think it's because the song is simply longer than *Fuck Me Out*, almost a full minute. Therefore, there is more information in the same plot size, which makes it more detailed.
 
@@ -649,21 +649,26 @@ plot(corpus_disttt, hang = -1, cex = 0.6, horiz=TRUE, main = "Cluster dendrogram
 
 ***
 
-*The Money Store* is (again, without taking Exmilitary into account) Death Grips' most popular album. Hacker is the first song to seperate from the other songs on the album. System Blower, Blackjack and Double Helix form one cluster. 
+*The Money Store* is (again, without taking *Exmilitary* into account) Death Grips' most popular album. Here we see a dendrogram using hierarchical clustering, where the heights reflect the distance between the clusters. As you can imagine: the lower the height, the more similarity.
 
-![Album cover of The Money Store](images/artrockstore.jpeg)
+At the first split, *System Blower*, *Blackjack* and *Double Helix* form one cluster. I think its partly since these three songs have a lower tempo than the rest of the songs. *Hacker* is the first song to seperate from the other songs on the album, it is the third most popular song of the band. According to the dendrogram, *Fuck That* and *I've Seen Footage* are the most similar songs on this album.
+
+I expected the dendrogram to show less height differences, since I thought this album contained the same experimentalness throughout the songs. However, I think it makes sense the top seven songs got clustered, since the other songs are really different from them.
+
+
+![Album cover of The Money Store. It represents the same progressive and edge ideology of the band](images/artrockstore.jpeg)
 
 ### `r fa(name = "music") ` Conclusion 
 
 ***Conclusion: What makes Death Grips experimental?***
 
-We've seen that **Death Grips’** music is very energetic and sad. In the tempogram, it became clear that Death Grips' music has a relatively high bpm (in between 100-160 bpm). So, the valence levels were remarkably low and the energy levels and bpm remarkably high. This corresponds with my expectations about Death Grips' being' music being very aggressive. I am very convinced that this is part of what makes Death Grips experimental: the aggressiveness. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggressiveness with their progressive blend of punk rock, hip-hop and industrial music.
+With a limited background in musicology and computer science, I still gained much knowledge from the data provided by the Spotify API. We've seen that **Death Grips’** music is very energetic and sad, which equals anger. In the tempogram, it became clear that Death Grips' music has a relatively high bpm (in between 100-160 bpm). So, the valence levels were remarkably low and the energy levels and bpm remarkably high. These outcomes correspond with my expectations about Death Grips' music being very aggressive. I am very convinced that this is part of what makes Death Grips experimental. Ofcourse, a lot of music is aggressive, but Death Grips introduced a new type of aggressiveness with their progressive blend of punk rock, hip-hop and industrial music. The messy chromagram of *Get Got* showed us that this song was hard to grasp for the Spotify API. However, *Runway H* showed us a very clear melody, mostly since it is an instrumental song. The cepstrograms showed that both *Fuck Me Out* and *Hot Head* are songs with a lot of brightness. I concluded that at least for these two songs, the brightness contributes to the experimentalness. 
 
-However, their experimentalness did not show in change (novelties) or uniqueness within the songs. We've seen that the experimental songs *Fuck Me Out* and *Hot Head* are very similar to themselves. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. I concluded that the songs are still experimental, just the same experimentalness throughout the songs. I suggest that this leaves room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable (if they plan on making more music).
+However, their experimentalness did not show in change (novelties) or uniqueness within Death Grips' songs. In the self-similarity matrices, we've seen that the timbre of the experimental songs *Fuck Me Out* and *Hot Head* are very similar to themselves. Furthermore, *Up My Sleeves* did not contain huge novelties in loudness. I concluded that the songs are still experimental, just the same experimentalness throughout the songs. I suggest that this leaves room for Death Grips to reinvent themselves and become even more experimental, inaccesible and unlistenable (if they plan on making more music).
 
 ***Future research***
 
-I have included two more playlists. The first one contains Death Grips' singles that weren't included in this research, for the interested. The second one is for the reader who is not convinced by Death Grips and would like something a bit more accessible: it contains three albums from The I.L.Y's. The I.L.Y's is a side project by Death Grips members Zach Hill and Andy Morin. You could expect their music to sound like Death Grips' instrumentals. However, I think The I.L.Y's' music is very different from those instrumentals, mostly because it is more rock, less hip hop and contains different vocals (not MC Ride's vocals). Give it a listen! For future research I would be interested in comparing Death Grips' with The I.L.Y's and also with Zach Hill's solo work. I would expect that the music of The I.L.Y's to have higher valence, lower energy (so: less aggressiveness), lower tempo and lower speechiness.
+I have included two more playlists. The first one contains Death Grips' singles that weren't included in this research, for the interested. The second one is for the reader who is not convinced by Death Grips and would like something a bit more accessible: it contains three albums from **The I.L.Y's**. The I.L.Y's is a side project by Death Grips members Zach Hill and Andy Morin. You could expect their music to sound like Death Grips' instrumentals. However, I think The I.L.Y's' music is very different from those instrumentals, mostly because it is more rock, less hip hop and contains different vocals (not MC Ride's vocals). Give it a listen! For future research I would be interested in comparing Death Grips' with The I.L.Y's and also with Zach Hill's solo work. I would expect that the music of The I.L.Y's to have higher valence, lower energy (so: less aggressiveness), lower tempo and lower speechiness.
 
 ***
 
